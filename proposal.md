@@ -4,7 +4,7 @@
 * Prasanth Abraham
 * Jason Ho
 * Andy Ruan
-* Gary Zhou
+* Jiahao Zhao
 
 ### Project Proposal
 1. ## TFTI
