@@ -18,3 +18,4 @@
 * Suggests restaurants based on proximity and preferences
 * Allow users to "check-in" at a restaurant to gather data on a user's eating preferences
 * Tinder-like swiping gesture to swipe through restaurants
+* Shows statistics of types of food you go to often, and recommends similar and new choices
