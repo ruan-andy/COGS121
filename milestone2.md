@@ -1,7 +1,7 @@
 # Milestone 2
 
 ## Storyboard 1
-![Page 1](github link)
+![Page 1](https://github.com/ruan-andy/COGS121/blob/master/storyboard1.png)
 
 ## Storyboard 2
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board%20(1).png)
