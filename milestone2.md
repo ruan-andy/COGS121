@@ -13,4 +13,7 @@
 ![Page 4](https://github.com/ruan-andy/COGS121/blob/master/Proto4.png)
 
 ## Prototype 2
-![Page 1](github link)
+Main screen
+![Page 1](https://github.com/ruan-andy/COGS121/blob/master/proto_1_main.jpg)
+
+
