@@ -4,7 +4,7 @@
 ![Page 1](github link)
 
 ## Storyboard 2
-![Page 1](github link)
+![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board.png)
 
 ## Prototype 1
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Proto1.png)
