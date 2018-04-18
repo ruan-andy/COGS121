@@ -17,7 +17,7 @@ Clicking on the green check will add to History, clicking on red X will hide fro
 ![Page 2](https://github.com/ruan-andy/COGS121/blob/master/Proto2.png)
 If you click on "See More" in the History or Statistics section
 ![Page 3](https://github.com/ruan-andy/COGS121/blob/master/Proto3.png)
-You can search for a particular restaurant to get info, add to history, or hide from results
+You can search for a type of food to get similar restaurants or a particular restaurant to get info, add to history, or hide from results
 ![Page 4](https://github.com/ruan-andy/COGS121/blob/master/Proto4.png)
 
 ## Prototype 2
