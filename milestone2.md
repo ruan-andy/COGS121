@@ -11,9 +11,13 @@
 ![Page 4](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board.png)
 
 ## Prototype 1
+Main Screen
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Proto1.png)
+Clicking on the green check will add to History, clicking on red X will hide from recommendations
 ![Page 2](https://github.com/ruan-andy/COGS121/blob/master/Proto2.png)
+If you click on "See More" in the History or Statistics section
 ![Page 3](https://github.com/ruan-andy/COGS121/blob/master/Proto3.png)
+You can search for a particular restaurant to get info, add to history, or hide from results
 ![Page 4](https://github.com/ruan-andy/COGS121/blob/master/Proto4.png)
 
 ## Prototype 2
