@@ -4,6 +4,7 @@
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/storyboard1.png)
 
 ## Storyboard 2
+### Replace "statics" with statistics (team member can't spell :P)
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board%20(1).png)
 ![Page 2](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board%20(2).png)
 ![Page 3](https://github.com/ruan-andy/COGS121/blob/master/Cogs%20121%20Story%20board%20(3).png)
