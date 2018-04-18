@@ -1,4 +1,4 @@
-# Milestone
+# Milestone 2
 
 ## Prototype 1
 ![Page 1](https://github.com/ruan-andy/COGS121/blob/master/Proto1.png)
