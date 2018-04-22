@@ -11,4 +11,6 @@ app.get('/exampleUrl', (req,res) => {
 });
 
 //http://localhost:3000/
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('Server started at http://localhost:3000/');
+});
