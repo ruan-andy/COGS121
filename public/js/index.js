@@ -5,9 +5,9 @@ $(document).ready(() => {
 		dataType: 'json',
 		success: (data) => {
 			console.log('received data', data);
-			$('#name').html('restaurant name: ' + data.example.name);
-			$('#pic').attr('src', data.example.pic);
-			$('#info').html('restaurant info: ' + data.example.info);
+			$('#name').html('restaurant name: ' + data.example1.name);
+			$('#pic').attr('src', data.example1.pic);
+			$('#info').html('restaurant info: ' + data.example1.info);
 		},
 	});
 });

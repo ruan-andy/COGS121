@@ -11,11 +11,10 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="../public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../public/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="../public/css/index.css" rel="stylesheet">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/index.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="../public/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(() => {
 		$('#reloadButton').click(() => {
@@ -26,7 +25,10 @@
 				dataType: 'json',
 				success: (data) => {
 					console.log('ajax sucess!', data);
-					$('#recom-data').html('New restaurants: ' + data);
+					$('#recom-data').html("");
+					$('#name').html('restaurant name: ' + data.name);
+					$('#pic').attr('src', data.pic);
+					$('#info').html('restaurant info: ' + data.info);
 				}
 			});
 		});
@@ -54,9 +56,14 @@
 
 		<h3>Recommendations</h3>
 		<div class="recom-container">
-		<button id="reloadButton">Show me more</button>
-		<div id="recom-data"><p>Recommendations show up here</p>
-		</div>
+			<button id="reloadButton">Show me more</button>
+			<div id="recom-data"><p>Recommendations show up here</p>
+			</div>
+
+			<div id="name"></div>
+			<img id="pic"></img>
+			<div id="info"></div>
+			<div id="select"></div>
 		</div>
 
 		<h3>History</h3>
@@ -64,11 +71,6 @@
 
 		<h3>Statistics</h3>
 		<a href="statistics.html">See more</a>
-
-	<div id="name"></div>
-	<img id="pic"></img>
-	<div id="info"></div>
-	<div id="select"></div>
 
 </body>
 </html>
