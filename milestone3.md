@@ -10,10 +10,10 @@
 ### History page
 ![History page](https://github.com/ruan-andy/COGS121/blob/master/skeleton%20screenshots/tinner%20skeleton%20history.png)
 
-###Statistics page
+### Statistics page
 ![Statistics page](https://github.com/ruan-andy/COGS121/blob/master/skeleton%20screenshots/tinner%20skeleton%20statistics.png)
 #### The Statistics page is only a placeholder as part of the skeleton. It will likely display a chart.
 
-## Frontend
+<!-- ## Frontend
 
-## Backend
+## Backend -->
