@@ -15,26 +15,8 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/index.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script type="text/javascript">
-	$(document).ready(() => {
-		$('#reloadButton').click(() => {
-			console.log('clicked!');
-			$.ajax({
-				url: 'example/example1',
-				type: 'GET',
-				dataType: 'json',
-				success: (data) => {
-					console.log('ajax sucess!', data);
-					$('#recom-data').html("");
-					$('#name').html('restaurant name: ' + data.name);
-					$('#pic').attr('src', data.pic);
-					$('#info').html('restaurant info: ' + data.info);
-				}
-			});
-		});
-	});
-	</script>
-
+	
+	<script src="/js/index.js"></script>
 </head>
 
 <body>
@@ -62,6 +44,7 @@
 
 			<div id="name"></div>
 			<img id="pic"></img>
+			<div id="address"></div>
 			<div id="info"></div>
 			<div id="select"></div>
 		</div>

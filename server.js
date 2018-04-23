@@ -14,8 +14,8 @@ app.get('exampleUrl', (req,res) => {
 });
 
 const exampleDatabase = {
-  'example1': {name: 'example1', pic: 'example.jpg', info: ['low cost', 'local', 'american', 'popular'], id: 1},
-  'example2': {name: 'example2', pic: 'example.jpg', info: ['high close', 'unique', 'american'], id: 2}
+  'example1': {name: 'example1', pic: 'example.jpg', address: '123 Example St, City CA Zip', info: ['low cost', 'local', 'american', 'popular'], id: 1},
+  'example2': {name: 'example2', pic: 'example.jpg', address: '123 Example St, City CA Zip', info: ['high close', 'unique', 'american'], id: 2}
 };
 
 app.get('/example', (req,res) => {

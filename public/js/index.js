@@ -1,13 +1,18 @@
 $(document).ready(() => {
-	$.ajax({
-		url: 'example',
-		type: 'GET',
-		dataType: 'json',
-		success: (data) => {
-			console.log('received data', data);
-			$('#name').html('restaurant name: ' + data.example1.name);
-			$('#pic').attr('src', data.example1.pic);
-			$('#info').html('restaurant info: ' + data.example1.info);
-		},
+	$('#reloadButton').click(() => {
+		console.log('clicked!');
+		$.ajax({
+			url: 'example/example1',
+			type: 'GET',
+			dataType: 'json',
+			success: (data) => {
+				console.log('ajax sucess!', data);
+				$('#recom-data').html("");
+				$('#name').html('restaurant name: ' + data.name);
+				$('#pic').attr('src', data.pic);
+				$('#info').html('Tags: ' + data.info);
+				$('#address').html('Address: ' + data.address);
+			}
+		});
 	});
 });
