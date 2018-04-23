@@ -14,12 +14,19 @@ app.get('exampleUrl', (req,res) => {
 });
 
 const exampleDatabase = {
-  'example': {name: 'example', pic: 'example.jpg', info: ['low cost', 'local', 'american', 'popular'], id: 1},
-  'example1': {name: 'example1', pic: 'example.jpg', info: ['high close', 'unique', 'american'], id: 2}
+  'example1': {name: 'example1', pic: 'example.jpg', info: ['low cost', 'local', 'american', 'popular'], id: 1},
+  'example2': {name: 'example2', pic: 'example.jpg', info: ['high close', 'unique', 'american'], id: 2}
 };
 
 app.get('/example', (req,res) => {
   res.send(exampleDatabase);
+});
+
+app.get('/example/:storeid', (req, res) => {
+  const storeToLookup = req.params.storeid;
+  const val = exampleDatabase[storeToLookup];
+  if(val) res.send(val);
+  else res.send({});
 });
 
 //http://localhost:3000/

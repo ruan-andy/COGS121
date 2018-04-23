@@ -16,12 +16,28 @@
 	<link href="../public/css/index.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="../public/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(() => {
+		$('#reloadButton').click(() => {
+			console.log('clicked!');
+			$.ajax({
+				url: 'example/example1',
+				type: 'GET',
+				dataType: 'json',
+				success: (data) => {
+					console.log('ajax sucess!', data);
+					$('#recom-data').html('New restaurants: ' + data);
+				}
+			});
+		});
+	});
+	</script>
 
 </head>
 
 <body>
 	<div class="container">
-		
+
 		<div class="jumbotron">
 			<h1>Tinner</h1>
 
@@ -38,7 +54,9 @@
 
 		<h3>Recommendations</h3>
 		<div class="recom-container">
-		<p>Recommendations show up here</p>
+		<button id="reloadButton">Show me more</button>
+		<div id="recom-data"><p>Recommendations show up here</p>
+		</div>
 		</div>
 
 		<h3>History</h3>
