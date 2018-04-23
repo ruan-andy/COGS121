@@ -2,23 +2,51 @@
 
 <html>
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Tinner</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src="https://code.jquery.com/jquery.js"></script>
 
-	<script src="/js/index.js"></script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../public/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="../public/css/index.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
-	<h1>Recommendations</h1>
+	<div class="container">
+		
+		<div class="jumbotron">
+			<h1>Tinner</h1>
 
-	<a href="history.html">History</a>
-	<a href="matches.html">Matches</a>
-	<a href="statistics.html">Statistics</a>
-	<br>
+			<div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+			<!--<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>-->
+			<!--<button id="testjs" class="btn btn-primary btn-lg">Test Javascript</button>-->
+		</div>
+
+
+		<h3>Recommendations</h3>
+		<div class="recom-container">
+		<p>Recommendations show up here</p>
+		</div>
+
+		<h3>History</h3>
+		<a href="history.html">See more</a>
+
+		<h3>Statistics</h3>
+		<a href="statistics.html">See more</a>
+
 	<div id="name"></div>
 	<img id="pic"></img>
 	<div id="info"></div>
