@@ -1,3 +1,5 @@
+/** Made for testing purposes **/
+
 'use strict';
  
 const yelp = require('yelp-fusion');
@@ -16,7 +18,7 @@ client.search({
   term:'Four Barrel Coffee',
   location: 'san francisco, ca'
 }).then(response => {
-  console.log(response.jsonBody.businesses[0].name);
+  console.log(response.jsonBody.businesses[0].categories);
 }).catch(e => {
   console.log(e);
 });
