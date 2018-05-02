@@ -6,14 +6,35 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/index.css" rel="stylesheet">
+	<link href="/css/general.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery.js"></script>
 
+
 	<script src="/js/history.js"></script>
-	
+
 </head>
 
 <body>
-	<a href="index.html">Recommendations</a>
+	<div class="container">
+
+		<div class="jumbotron">
+			<h1>Tinner</h1>
+
+			<div class="search-container">
+    <!--<form action="/action_page.php">-->
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    <!--</form>-->
+  </div>
+			<!--<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>-->
+			<!--<button id="testjs" class="btn btn-primary btn-lg">Test Javascript</button>-->
+		</div>
+	<h3>History</h3>
+
+	<a href="index.html">Back to recommendations</a>
 	<br>
 	<div id="restaurants"></div>
 </body>

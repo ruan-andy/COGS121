@@ -1,5 +1,8 @@
 $(document).ready(() => {
 
+$('#addButton').hide();
+$('#hideButton').hide();
+
 let prevNum = 0;
 
 function getRandInteger(min, max) {
@@ -32,10 +35,12 @@ $('#reloadButton').click(() => {
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
 			$('#recom-data').html("");
-			$('#name').html('restaurant name: ' + business.name);
+			$('#name').html(business.name);
 			$('#pic').attr('src', business.image_url).attr('width', '300px');
 			$('#info').html('Tags: ' + getTags(business.categories));
 			$('#address').html('Address: ' + (business.location.display_address).join(', '));
+			$('#addButton').show();
+			$('#hideButton').show();
 		}
 	});
 });
