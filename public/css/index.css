@@ -11,10 +11,10 @@
 
 /* this style exists to make it obvious that you've successfully linked
    the CSS to the page. feel free to remove it once the link is working. */
-body {
+/*body {
      border: 1px dotted gray;
      padding: 20px;
-}
+}*/
 
 img{
     width:100%;
@@ -26,7 +26,7 @@ button {
     background-color: #008CBA; /*blue*/
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 40px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -35,20 +35,44 @@ button {
 
 #hideButton {
 	background-color: #f44336;
+	float: right;
 }
 
 #addButton {
 	background-color: #4CAF50;
+
 }
 
 #reloadButton {
 	float: right;
 }
 
-.storeBox {
+#storeBox {
 	background: none;
 	background-color: #e2ecff;
+	border: solid;
+	border-color: #008CBA;
+	padding: 10px 10px;
+	max-width: 250px;
 }
+
+#name {
+	font-size: 20px;
+	text-align: center;
+}
+
+#address {
+	font-size: 16px;
+	text-align: center;
+}
+
+#pic {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	width: 99%;
+}
+
 
 .jumbotron {
 	position: relative;
