@@ -10,6 +10,11 @@ app.use(express.static('images'));
 //necessary to use files from public
 app.use(express.static('public'));
 
+// db
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('users.db');
+
+
 app.get('/:name/:location', (req, res) => {
 
   	client.search({
@@ -21,6 +26,37 @@ app.get('/:name/:location', (req, res) => {
 	}).catch(e => {
   		console.log(e);
 	});
+});
+
+app.get('/history', (req, res) => {
+  // db.all() fetches all results from an SQL query into the 'rows' variable:
+  db.all('SELECT name FROM restaurants', (err, rows) => {
+    console.log(rows);
+    const allUsernames = rows.map(e => e.name);
+    console.log(allUsernames);
+    res.send(allUsernames);
+  });
+});
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
+app.post('/history', (req, res) => {
+  console.log(req.body);
+  db.run(
+    'INSERT INTO restaurants VALUES ($name)',
+    // parameters to SQL query:
+    {
+      $name: req.body.name,
+    },
+    // callback function to run when the query finishes:
+    (err) => {
+      if (err) {
+        res.send({message: 'error in app.post(/history)'});
+      } else {
+        res.send({message: 'successfully run app.post(/history)'});
+      }
+    }
+  );
 });
 
 //http://localhost:3000/

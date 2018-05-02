@@ -69,5 +69,22 @@ $('#discoverButton').click(() => {
 	});
 });
 
+$('#addButton').click(() => {
+	console.log('clicked!');
+	console.log(document.getElementById('r_name').innerHTML);
+	const r_name = document.getElementById('r_name').innerHTML;
+	$.ajax({
+      // all URLs are relative to http://localhost:3000/
+      url: '/history',
+      type: 'POST', // <-- this is POST, not GET
+      data: {
+              name: r_name,
+            },
+      success: (data) => {
+        $('#status').html(data.message);
+      }
+    });
+});
+
 
 });

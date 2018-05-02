@@ -1,6 +1,6 @@
 $(document).ready(() => {
-
   //loads data from get example url to display restaurants 
+/*
 	$.ajax({
 		url: 'example',
 		type: 'GET',
@@ -15,5 +15,20 @@ $(document).ready(() => {
           '<div id="select"></div> <br>');
       };
 		},
-	});
+	});*/
+	$.ajax({
+		url: 'history',
+		type: 'GET',
+		dataType: 'json',
+		success: (data) => {
+        console.log('You received some data!', data);
+        //$('#status').html('All restaurants: ' + data);
+        //$('#history_list').appendChild(document.createElement("li").createTextNode(data));
+        for(i in data) {
+        	$('#history_list').append('<li>' + data[i] + '</li>');	
+        }
+        
+      },
+	})
+
 });
