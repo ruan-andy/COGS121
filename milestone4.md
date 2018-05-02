@@ -2,7 +2,7 @@
 ## Screenshots
 
 ### Home page
-![Homepage](https://github.com/ruan-andy/COGS121/blob/master/skeleton%20screenshots/index.JPG)
+![Homepage](https://github.com/ruan-andy/COGS121/blob/master/skeleton%20screenshots/Index.JPG)
 ### History page
 ![History page](https://github.com/ruan-andy/COGS121/blob/master/skeleton%20screenshots/history.JPG)
 ### Recommendation Tab
