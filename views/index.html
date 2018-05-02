@@ -40,30 +40,40 @@
 		<h3>Recommendations</h3>
 		<div class="recom-container">
 			<button id="reloadButton">Show me more</button>
-			
+				<p></p>
+
 			<div id="r_recom-data"><p>Recommendations show up here</p>
 			</div>
-
-			<div id="r_name"></div>
-			<img id="r_pic"></img>
-			<div id="r_address"></div>
-			<div id="r_info"></div>
-			<div id="r_select"></div>
+			<div id="storeBox" class="store-container">
+				<div class="name" id="r_name"></div>
+				<img class="pic" id="r_pic"></img>
+				<div class="address" id="r_address"></div>
+				<div id="r_info"></div>
+				<div id="r_select"></div>
+				<br>
+				<button id="addButton">+</button>
+				<button id="hideButton">X</button>
+				<br>
+			</div>
 		</div>
-
+<br>
 		<div class="recom-container">
 			<button id="discoverButton">Discover New Cuisine</button>
+			<p></p>
 			<div id="d_recom-data"><p>Click to discover!</p>
 			</div>
-
-			<div id="d_name"></div>
-			<img id="d_pic"></img>
-			<div id="d_address"></div>
+			<div id="discoverBox" class="store-container">
+			<div class="name" id="d_name"></div>
+			<img class="pic" id="d_pic"></img>
+			<div class="address" id="d_address"></div>
 			<div id="d_info"></div>
 			<div id="d_select"></div>
+			<button id="addButton">+</button>
+			<button id="hideButton">X</button>
+		</div>
 		</div>
 
-		<div class="storeBox">
+		<!--<div class="storeBox">
 			<div id="name"></div>
 			<img id="pic"></img>
 			<div id="address"></div>
@@ -71,15 +81,17 @@
 			<div id="select"></div>
 			<button id="addButton">+</button>
 			<button id="hideButton">X</button>
-		</div>
+		</div>-->
 
 
 
 
 		<h3>History</h3>
+		<p class="noData">No places in history</p>
 		<a href="history.html">See more</a>
 
 		<h3>Statistics</h3>
+		<p class="noData">Statistics coming soon</p>
 		<a href="statistics.html">See more</a>
 
 </body>

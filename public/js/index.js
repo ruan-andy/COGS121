@@ -2,6 +2,8 @@ $(document).ready(() => {
 
 $('#addButton').hide();
 $('#hideButton').hide();
+$('#storeBox').hide();
+$('#discoverBox').hide();
 
 let prevNum = 0;
 
@@ -35,10 +37,11 @@ $('#reloadButton').click(() => {
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
 			$('#r_recom-data').html("");
-			$('#r_name').html('Restaurant Name: ' + business.name);
+			$('#storeBox').show();
+			$('#r_name').html(business.name);
 			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
 			$('#r_info').html('Tags: ' + getTags(business.categories));
-			$('#r_address').html('Address: ' + (business.location.display_address).join(', '));
+			$('#r_address').html((business.location.display_address).join(', '));
 			$('#addButton').show();
 			$('#hideButton').show();
 		}
@@ -57,6 +60,7 @@ $('#discoverButton').click(() => {
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 30)];
 			$('#d_recom-data').html("");
+			$('#discoverBox').show();
 			$('#d_name').html('Restaurant Name: ' + business.name);
 			$('#d_pic').attr('src', business.image_url).attr('width', '300px');
 			$('#d_info').html('Tags: ' + getTags(business.categories));
