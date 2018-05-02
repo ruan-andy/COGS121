@@ -1,5 +1,8 @@
 $(document).ready(() => {
 
+$('#addButton').hide();
+$('#hideButton').hide();
+
 let prevNum = 0;
 
 function getRandInteger(min, max) {
@@ -36,6 +39,8 @@ $('#reloadButton').click(() => {
 			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
 			$('#r_info').html('Tags: ' + getTags(business.categories));
 			$('#r_address').html('Address: ' + (business.location.display_address).join(', '));
+			$('#addButton').show();
+			$('#hideButton').show();
 		}
 	});
 });
