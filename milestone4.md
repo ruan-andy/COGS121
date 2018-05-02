@@ -3,7 +3,7 @@
 ## UI Changes
 
 ### Home page
-#### We improved the presentation of the restaurants being displayed on the homepage and added another Discover button to show recommendations of restaurants that are different from the user's typical preferences 
+#### We improved the presentation of the restaurants being displayed on the homepage and added another Discover button to show recommendations of restaurants that are different from the user's typical preferences. We plan on showing more than one recommendation on the page at at a time in each section in the future 
 ![Homepage](https://github.com/ruan-andy/COGS121/blob/master/milestone4/homepage.png)
 
 
