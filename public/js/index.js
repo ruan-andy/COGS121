@@ -31,12 +31,34 @@ $('#reloadButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			$('#recom-data').html("");
-			$('#name').html('restaurant name: ' + business.name);
-			$('#pic').attr('src', business.image_url).attr('width', '300px');
-			$('#info').html('Tags: ' + getTags(business.categories));
-			$('#address').html('Address: ' + (business.location.display_address).join(', '));
+			$('#r_recom-data').html("");
+			$('#r_name').html('restaurant name: ' + business.name);
+			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
+			$('#r_info').html('Tags: ' + getTags(business.categories));
+			$('#r_address').html('Address: ' + (business.location.display_address).join(', '));
 		}
 	});
 });
+
+
+$('#discoverButton').click(() => {
+	console.log('clicked!');
+	$.ajax({
+		url: '/food/San Diego, CA',
+		type: 'GET',
+		dataType: 'json',
+		success: (data) => {
+			console.log('ajax sucess!', data);
+			//get the first business
+			const business = data.businesses[getRandInteger(0, 10)];
+			$('#d_recom-data').html("");
+			$('#d_name').html('restaurant name: ' + business.name);
+			$('#d_pic').attr('src', business.image_url).attr('width', '300px');
+			$('#d_info').html('Tags: ' + getTags(business.categories));
+			$('#d_address').html('Address: ' + (business.location.display_address).join(', '));
+		}
+	});
+});
+
+
 });
