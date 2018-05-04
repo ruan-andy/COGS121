@@ -33,9 +33,14 @@ button {
     font-size: 16px;
 }
 
-#hideButton {
+#d_hideButton {
 	background-color: #f44336;
 	float: right;
+}
+
+#r_hideButton {
+  background-color: #f44336;
+  float: right;
 }
 
 #addButton {
