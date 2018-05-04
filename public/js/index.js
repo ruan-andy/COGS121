@@ -75,13 +75,20 @@ $('#r_hideButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
 		url: '/BBQ/San Diego, CA',
-			const business = data.businesses[getRandInteger(0, 30)];
-			$('#d_recom-data').html("");
-			$('#discoverBox').show();
-			$('#d_name').html('Restaurant Name: ' + business.name);
-			$('#d_pic').attr('src', business.image_url).attr('width', '300px');
-			$('#d_info').html('Tags: ' + getTags(business.categories));
-			$('#d_address').html('Address: ' + (business.location.display_address).join(', '));
+		type: 'GET',
+		dataType: 'json',
+		success: (data) => {
+			console.log('ajax sucess!', data);
+			//get the first business
+			const business = data.businesses[getRandInteger(0, 10)];
+			$('#r_recom-data').html("");
+			$('#storeBox').show();
+			$('#r_name').html(business.name);
+			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
+			$('#r_info').html('Tags: ' + getTags(business.categories));
+			$('#r_address').html((business.location.display_address).join(', '));
+			$('#addButton').show();
+			$('#hideButton').show();
 		}
 	});
 });
