@@ -26,6 +26,7 @@ function getTags(categories) {
 	return str;
 }
 
+// clicking on show more
 $('#reloadButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
@@ -48,7 +49,29 @@ $('#reloadButton').click(() => {
 	});
 });
 
+// Search button for name
+$('#searchButton').click(() => {
+	console.log('search clicked!');
+	console.log(document.getElementById('searchBox'));
+	$.ajax({
+		url: '/food/San Diego, CA',
+		type: 'GET',
+		dataType: 'json',
+		success: (data) => {
+			console.log('ajax sucess!', data);
+			//get the first business
+			const business = data.businesses[getRandInteger(0, 30)];
+			$('#d_recom-data').html("");
+			$('#discoverBox').show();
+			$('#d_name').html('Restaurant Name: ' + business.name);
+			$('#d_pic').attr('src', business.image_url).attr('width', '300px');
+			$('#d_info').html('Tags: ' + getTags(business.categories));
+			$('#d_address').html('Address: ' + (business.location.display_address).join(', '));
+		}
+	});
+});
 
+// clicking on discover
 $('#discoverButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
@@ -69,6 +92,7 @@ $('#discoverButton').click(() => {
 	});
 });
 
+// adding the restaurants shown above will add it to the database
 $('#addButton').click(() => {
 	console.log('clicked!');
 	console.log(document.getElementById('r_name').innerHTML);

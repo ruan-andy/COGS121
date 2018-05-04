@@ -25,6 +25,7 @@ app.get('/:name/:location', (req, res) => {
   		res.send(response.jsonBody);
 	}).catch(e => {
   		console.log(e);
+      res.send('[]');
 	});
 });
 
@@ -70,12 +71,7 @@ app.listen(3000, () => {
 //  res.send(databaseValues);
 //});
 
-/*const exampleDatabase = {
-  'example1': {name: 'example1', pic: 'example.jpg', address: '123 Example St, City CA Zip', info: ['low cost', 'local', 'american', 'popular'], id: 1},
-  'example2': {name: 'example2', pic: 'pizza.jpg', address: '456 Example St, City CA Zip', info: ['high close', 'unique', 'american'], id: 2},
-  'example3': {name: 'example3', pic: 'sushi.jpg', address: '7896 Example St, City CA Zip', info: ['delicious', 'sushi', 'japanese'], id: 3}
-};
-
+/*
 app.get('/example', (req,res) => {
   res.send(exampleDatabase);
 });

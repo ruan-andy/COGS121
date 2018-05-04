@@ -22,10 +22,8 @@ $(document).ready(() => {
 		dataType: 'json',
 		success: (data) => {
         console.log('You received some data!', data);
-        //$('#status').html('All restaurants: ' + data);
-        //$('#history_list').appendChild(document.createElement("li").createTextNode(data));
         for(i in data) {
-        	$('#history_list').append('<li>' + data[i] + '</li>');	
+        	$('#history_list').append('<li>' + data[i] + '</li>');
         }
         
       },
