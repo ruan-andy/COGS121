@@ -153,11 +153,6 @@ $('#addButton').click(() => {
   });
 });
 
-
-
-
-
-
 /** CODE FOR AUTO COMPLETE 
  *
  *
@@ -178,23 +173,16 @@ $('#addButton').click(() => {
   		url: '/search/' + val + '/32.8316115/-117.1626717',
   		type: 'GET',
   		dataType: 'json',
+  		async: false,
   		success: (data) => {
   			console.log('ajax sucess!', data);
 			//get the first business
-			let result = data.businesses;
+			arr = data.businesses;
 			//get only the names of the businesses
-			result = result.map(r => r.name);
-
-			if (result !== arr) {
-				//autocomplete(document.getElementById("searchBox"), result);
-				//return;
-			}
+			arr = arr.map(r => r.name);
 		}
 	});
 
-
-
-  	
   	/*close any already open lists of autocompleted values*/
   	closeAllLists();
   	if (!val) { return false;}
@@ -214,7 +202,7 @@ $('#addButton').click(() => {
         	/*create a DIV element for each matching element:*/
         	b = document.createElement("DIV");
         	/*make the matching letters bold:*/
-        	b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+        	b.innerHTML =  arr[i].substr(0, val.length);
         	b.innerHTML += arr[i].substr(val.length);
         	/*insert a input field that will hold the current array item's value:*/
         	b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
@@ -297,7 +285,6 @@ document.addEventListener("click", function (e) {
 	closeAllLists(e.target);
 });
 }
-
 
 autocomplete(document.getElementById("searchBox"), []);
 
