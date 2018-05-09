@@ -29,6 +29,21 @@ app.get('/:name/:location', (req, res) => {
 	});
 });
 
+app.get('/search/:name/:latitude/:longitude', (req,res) => {
+  client.autocomplete({
+    text: req.params.name,
+    latitude: req.params.latitude,
+    longitude: req.params.longitude
+  }).then(response => {
+    console.log("Sending autocomplete result");
+    res.send(response.jsonBody);
+  }).catch(e => {
+    console.log(e);
+    res.send('[]');
+});
+
+})
+
 app.get('/history', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
   db.all('SELECT name FROM restaurants', (err, rows) => {
