@@ -60,7 +60,7 @@ $('#searchButton').click(() => {
 		type: 'GET',
 		dataType: 'json',
 		success: (data) => {
-			console.log('ajax sucess!', data);
+			console.log('ajax success!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
 			$('#r_recom-data').html("");
@@ -155,6 +155,20 @@ $('#addButton').click(() => {
   });
 });
 
+//Getting user location
+
+window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+
+
+
 /** CODE FOR AUTO COMPLETE
  *
  *
@@ -177,7 +191,7 @@ $('#addButton').click(() => {
   		dataType: 'json',
   		async: false,
   		success: (data) => {
-  			console.log('ajax sucess!', data);
+  			console.log('ajax success!', data);
 			//get the first business
 			arr = data.businesses;
 			//get only the names of the businesses
