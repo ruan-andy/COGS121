@@ -4,6 +4,8 @@ $(document).ready(() => {
 	$('#hideButton').hide();
 	$('#storeBox').hide();
 	$('#discoverBox').hide();
+	$('#profileInfo').hide();
+	$('#glogout').hide();
 
 	let prevNum = 0;
 
@@ -153,7 +155,7 @@ $('#addButton').click(() => {
   });
 });
 
-/** CODE FOR AUTO COMPLETE 
+/** CODE FOR AUTO COMPLETE
  *
  *
  */
