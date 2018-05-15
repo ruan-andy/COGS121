@@ -78,7 +78,7 @@
 			</html>
 
 			<div id='profileInfo'>
-				<p id="fullName"></p>
+				<h4 id="fullName"></h4>
 			</div>
 
 			<div id="glogout">
@@ -88,6 +88,7 @@
 						var auth2 = gapi.auth2.getAuthInstance();
 						auth2.signOut().then(function() {
 							console.log('User signed out.');
+							$('#profileInfo').hide();
 							$('#glogout').hide();
 						});
 
