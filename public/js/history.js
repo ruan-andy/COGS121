@@ -29,11 +29,11 @@ $(document).ready(() => {
   				type: 'GET',
   				dataType: 'json',
   				async: false,
-  				success: (data2) => {
-  					data[i] = data2.name;
+  				success: (restaurant) => {
+  					$('#history_list').append('<li>' + restaurant.name + '<br>' +
+  						'<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');
 				}
-			})
-			$('#history_list').append('<li>' + data[i] + '</li>');
+			})	
         }
       },
 	})
