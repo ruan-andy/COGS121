@@ -17,13 +17,11 @@ body {
 }
 
 img{
-    width:100%;
-    max-width:200px;
-		max-height: 200px;
+
 }
 
 button {
-    background-color: #008CBA; /*blue*/
+    background-color: #FFA0A0; /*light red*/
     border: none;
     color: white;
     padding: 10px 40px;
@@ -31,20 +29,22 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+		border-radius: 15px;
 }
 
 #d_hideButton {
-	background-color: #f44336;
-	float: right;
+	width: 40%;
 }
 
 #r_hideButton {
-  background-color: #f44336;
-  float: right;
+  /* background-color: #f44336;
+  float: right; */
+	width: 40%;
 }
 
 #addButton {
-	background-color: #4CAF50;
+	/* background-color: #4CAF50; */
+	width: 40%;
 
 }
 
@@ -52,17 +52,18 @@ button {
 	/*float: right;*/
 }
 
-#glogin {
-	float: right;
+.wrapper {
+	text-align: center;
+	width: 600px;
+	margin: 0 auto;
 }
-
 .store-container {
 	background: none;
-	background-color: #e2ecff;
-	border: solid;
-	border-color: #008CBA;
+	background-color: #FFCBA0;
+	border-radius: 15px;
 	padding: 10px 10px;
-	max-width: 250px;
+	height: 60vh;
+	margin: auto;
 }
 
 .name {
@@ -79,14 +80,18 @@ button {
 	display: block;
   margin-left: auto;
   margin-right: auto;
-	width: 99%;
+	height: 40vh;
+	width: auto;
+	border-radius: 15px;
 }
 
 
 .jumbotron {
 	position: relative;
 	background: none;
-	background-color: #e2ecff;
+	background-color: #f27474;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .jumbotron:after {
@@ -115,6 +120,10 @@ button {
 
 .jumbotron p.active {
      color: #1f6ddd;
+}
+
+.centered {
+	text-align: center;
 }
 
 .search-container {

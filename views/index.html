@@ -1,7 +1,6 @@
 <!doctype html>
 
 <html>
-
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Tinner</title>
@@ -28,131 +27,99 @@
 			<h1>Tinner</h1>
 
 			<div class="search-container">
-				<!--<form action="/action_page.php">-->
 				<form autocomplete="off">
 					<div class="autocomplete" style="width:300px;">
 						<input id="searchBox" type="text" name="search" placeholder="Search..">
 						<button id="searchButton" type="submit"><i class="fa fa-search"></i></button>
 					</div>
 				</form>
-
-
-				<!--</form>-->
-			</div>
-			<!--<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>-->
-			<!--<button id="testjs" class="btn btn-primary btn-lg">Test Javascript</button>-->
-		</div>
-
-		<div id="glogin">
-			<html lang="en">
-
-			<head>
-				<meta name="google-signin-scope" content="profile email">
-				<meta name="google-signin-client_id" content="721262169117-sdanablvj2lhj0oa7f630jm7fdel365e.apps.googleusercontent.com">
-				<script src="https://apis.google.com/js/platform.js" async defer></script>
-			</head>
-
-			<body>
-				<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-				<script>
-					function onSignIn(googleUser) {
-						// Useful data for your client-side scripts:
-						var profile = googleUser.getBasicProfile();
-						console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-						console.log('Full Name: ' + profile.getName());
-						$('#fullName').text(profile.getName());
-						console.log('Given Name: ' + profile.getGivenName());
-						console.log('Family Name: ' + profile.getFamilyName());
-						console.log("Image URL: " + profile.getImageUrl());
-						console.log("Email: " + profile.getEmail());
-
-						// The ID token you need to pass to your backend:
-						var id_token = googleUser.getAuthResponse().id_token;
-						console.log("ID Token: " + id_token);
-						$('#profileInfo').show();
-						$('#glogout').show();
-					};
-				</script>
-			</body>
-
-			</html>
-
-			<div id='profileInfo'>
-				<h4 id="fullName"></h4>
-			</div>
-
-			<div id="glogout">
-				<a href="#" onclick="signOut();">Sign out</a>
-				<script>
-					function signOut() {
-						var auth2 = gapi.auth2.getAuthInstance();
-						auth2.signOut().then(function() {
-							console.log('User signed out.');
-							$('#profileInfo').hide();
-							$('#glogout').hide();
-						});
-
-					}
-				</script>
 			</div>
 		</div>
 
-		<h3>Recommendations</h3>
-		<div class="recom-container">
+		<br>
+
+		<ul class="nav nav-pills nav-justified">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Recommendations </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="history.html">History</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="statistics.html">Statistics</a>
+		</ul>
+
+		<br>
+
+		<div class="container recom-container">
 			<button id="reloadButton">Show me more</button>
 			<p></p>
 
-			<div id="r_recom-data">
-				<p>Recommendations show up here</p>
+			<div id="r_recom-data"><p>Recommendations show up here</p>
 			</div>
 			<div id="storeBox" class="store-container">
 				<div class="name" id="r_name"></div>
 				<img class="pic" id="r_pic"></img>
 				<div class="address" id="r_address"></div>
-				<div id="r_info"></div>
+				<div class="centered" id="r_info"></div>
 				<div id="r_select"></div>
-				<br>
-				<button id="addButton">+</button>
-				<button id="r_hideButton">X</button>
-				<br>
+
+				<div class="wrapper">
+				<button id="r_hideButton" class="btn-danger btn-lg">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+				<button id="addButton" class="btn-success btn-lg">
+					<span class="glyphicon glyphicon-heart"></span>
+				</button>
+
+			</div>
 			</div>
 		</div>
+
 		<br>
-		<div class="recom-container">
+
+		<div class="container recom-container">
 			<button id="discoverButton">Discover New Cuisine</button>
 			<p></p>
-			<div id="d_recom-data">
-				<p>Click to discover!</p>
+			<div id="d_recom-data"><p>Click to discover!</p>
 			</div>
 			<div id="discoverBox" class="store-container">
 				<div class="name" id="d_name"></div>
 				<img class="pic" id="d_pic"></img>
 				<div class="address" id="d_address"></div>
-				<div id="d_info"></div>
+				<div id="d_info" class="centered"></div>
 				<div id="d_select"></div>
-				<button id="addButton">+</button>
-				<button id="d_hideButton">X</button>
+
+				<div class="wrapper">
+
+				<button id="d_hideButton" class="btn-danger btn-lg">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+				<button id="addButton" class="btn-success btn-lg">
+					<span class="glyphicon glyphicon-heart"></span>
+				</button>
+			</div>
 			</div>
 		</div>
 
 		<!--<div class="storeBox">
-			<div id="name"></div>
-			<img id="pic"></img>
-			<div id="address"></div>
-			<div id="info"></div>
-			<div id="select"></div>
-			<button id="addButton">+</button>
-			<button id="hideButton">X</button>
-		</div>-->
+		<div id="name"></div>
+		<img id="pic"></img>
+		<div id="address"></div>
+		<div id="info"></div>
+		<div id="select"></div>
+		<button id="addButton">+</button>
+		<button id="hideButton">X</button>
+	</div>-->
 
-		<h3>History</h3>
-		<p class="noData">No places in history</p>
-		<a href="history.html">See more</a>
+	<!-- <h3>History</h3>
+	<p class="noData">No places in history</p>
+	<a href="history.html">See more</a>
 
-		<h3>Statistics</h3>
-		<p class="noData">Statistics coming soon</p>
-		<a href="statistics.html">See more</a>
+	<h3>Statistics</h3>
+	<p class="noData">Statistics coming soon</p>
+	<a href="statistics.html">See more</a> -->
 
+</div>
 </body>
-
 </html>
