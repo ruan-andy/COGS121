@@ -2,6 +2,7 @@
 
 <html>
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Tinner Statistics</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,19 +19,31 @@
 
 <body>
 	<div class="container">
-
 		<div class="jumbotron">
 			<h1>Tinner</h1>
 
 			<div class="search-container">
-    <!--<form action="/action_page.php">-->
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    <!--</form>-->
-  </div>
-			<!--<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>-->
-			<!--<button id="testjs" class="btn btn-primary btn-lg">Test Javascript</button>-->
+				<form autocomplete="off">
+					<div class="autocomplete" style="float: right;">
+						<input style="border-radius: 15px 0px 0px 15px" id="searchBox" type="text" name="search" placeholder="Search..">
+						<button style="border-radius: 0px 15px 15px 0px" id="searchButton" type="submit"><i class="fa fa-search"></i></button>
+					</div>
+				</form>
+			</div>
 		</div>
+
+		<br>
+
+		<ul class="nav nav-pills nav-justified">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Recommendations </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="history.html">History</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="statistics.html">Statistics</a>
+		</ul>
 
 	<h3>Statistics</h3>
 	<p class="noData">Statistics coming soon</p>
