@@ -40,17 +40,30 @@ app.get('/search/:name/:latitude/:longitude', (req,res) => {
   }).catch(e => {
     console.log(e);
     res.send('[]');
-});
-
+  });
 })
+
 
 app.get('/history', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
   db.all('SELECT name FROM restaurants', (err, rows) => {
-    console.log(rows);
-    const allUsernames = rows.map(e => e.name);
-    console.log(allUsernames);
-    res.send(allUsernames);
+
+    let restaurantIdArr = rows.map(e => e.name);
+    
+    for (let name of restaurantIdArr) {
+      //search businessID using Yelp
+      client.business(name).then(response => {
+        name = response.jsonBody.name;
+        console.log("restaurant name: " + name);
+      }).catch(e => {
+        console.log(e);
+      });
+      
+    }
+
+
+    res.send(restaurantIdArr);
+
   });
 });
 
