@@ -20,12 +20,21 @@ $(document).ready(() => {
 		url: 'history',
 		type: 'GET',
 		dataType: 'json',
+		//async: false,
 		success: (data) => {
-        console.log('You received some data!', data);
         for(i in data) {
-        	$('#history_list').append('<li>' + data[i] + '</li>');
+			/* Ajax request to get the name of the given ID */
+			$.ajax({
+  				url: '/business/' + data[i],
+  				type: 'GET',
+  				dataType: 'json',
+  				async: false,
+  				success: (data2) => {
+  					data[i] = data2.name;
+				}
+			})
+			$('#history_list').append('<li>' + data[i] + '</li>');
         }
-        
       },
 	})
 

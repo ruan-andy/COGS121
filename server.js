@@ -15,7 +15,7 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('users.db');
 
 
-app.get('/:name/:location', (req, res) => {
+app.get('/search/:name/:location', (req, res) => {
 
   	client.search({
   		term: req.params.name,
@@ -43,29 +43,26 @@ app.get('/search/:name/:latitude/:longitude', (req,res) => {
   });
 })
 
+app.get('/business/:id', (req, res) => {
+  client.business(req.params.id).then(response => {
+    res.send(response.jsonBody);
+  }).catch(e => {
+    console.log(e);
+    res.send('[]');
+  });
+})
+
 
 app.get('/history', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
+  let restaurantIdArr;
   db.all('SELECT name FROM restaurants', (err, rows) => {
-
-    let restaurantIdArr = rows.map(e => e.name);
-    
-    for (let name of restaurantIdArr) {
-      //search businessID using Yelp
-      client.business(name).then(response => {
-        name = response.jsonBody.name;
-        console.log("restaurant name: " + name);
-      }).catch(e => {
-        console.log(e);
-      });
-      
-    }
-
-
+    restaurantIdArr = rows.map(e => e.name);
+    console.log(restaurantIdArr);
     res.send(restaurantIdArr);
-
   });
-});
+})
+
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true})); // hook up with your app

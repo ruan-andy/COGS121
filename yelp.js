@@ -17,7 +17,7 @@ const client = yelp.client("qfJrBat2sVtDJNrOfaG-Cdngzltp2eUpsBmqyj2-5wv1AHpptgzT
 });*/
 
 /*get business details*/
-client.business('nWq7Sdd-fQId7S9UH6BBWA').then(response => {
+client.business('sjv7DSBueHfOyWIjfULOAw').then(response => {
   console.log(response.jsonBody.name);
 }).catch(e => {
   console.log(e);

@@ -11,7 +11,7 @@ $(document).ready(() => {
 
 	let prevNum = 0;
 	let businessID;
-	var resultID;
+	//let resultID;
 
 	function getRandInteger(min, max) {
 		let num = 0;
@@ -36,7 +36,7 @@ $(document).ready(() => {
 $('#reloadButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
-		url: '/BBQ/San Diego, CA',
+		url: '/search/BBQ/San Diego, CA',
 		type: 'GET',
 		dataType: 'json',
 		success: (data) => {
@@ -59,40 +59,51 @@ $('#reloadButton').click(() => {
 // Search button for name
 $('#searchButton').click(() => {
 	console.log('search clicked!');
-	console.log(document.getElementById('searchBox'));
+
+	//get the autocompleted restaurant name
+	const val = document.getElementById('searchBox').value;
+
+	/* Ajax request to get the restaurant using the name in the searchbar */
+	let restaurantID;
+	$.ajax({
+  		url: '/search/' + val + '/32.8316115/-117.1626717',
+  		type: 'GET',
+  		dataType: 'json',
+  		async: false,
+  		success: (data) => {
+			//get the first business
+			restaurantID = data.businesses[0].id;
+			console.log(restaurantID);
+		}
+	});
+
+	/* Ajax request to get more info about this restaurant */
+	let business;
+	$.ajax({
+  		url: '/business/' + restaurantID,
+  		type: 'GET',
+  		dataType: 'json',
+  		async: false,
+  		success: (data) => {
+  			business = data;
+			console.log(data);
+		}
+	});
+
 	$('#s_recom-data').html("");
 	$('#searchResultBox').show();
-	$('#s_name').html(resultID);
-	//TODO
-	//$('#s_pic').attr('src', business.image_url).attr('width', '300px');
-	//$('#s_info').html('Tags: ' + getTags(business.categories));
-	//$('#s_address').html((business.location.display_address).join(', '));
+	$('#s_name').html(business.name);
+	$('#s_pic').attr('src', business.image_url).attr('width', '300px');
+	$('#s_info').html('Tags: ' + getTags(business.categories));
+	$('#s_address').html((business.location.display_address).join(', '));
 	$('#addButton').show();
 	$('#hideButton').show();
-
-	/*$.ajax({
-		url: '/food/San Diego, CA',
-		type: 'GET',
-		dataType: 'json',
-		success: (data) => {
-			console.log('ajax success!', data);
-			//get the first business
-			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
-			$('#s_recom-data').html("");
-			$('#searchResultBox').show();
-			$('#s_name').html(business.name);
-			$('#s_pic').attr('src', business.image_url).attr('width', '300px');
-			$('#s_info').html('Tags: ' + getTags(business.categories));
-			$('#s_address').html((business.location.display_address).join(', '));
-		}
-	});*/
 });
 
 $('#r_hideButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
-		url: '/BBQ/San Diego, CA',
+		url: '/search/BBQ/San Diego, CA',
 		type: 'GET',
 		dataType: 'json',
 		success: (data) => {
@@ -120,7 +131,7 @@ $('#s_hideButton').click(() => {
 $('#discoverButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
-		url: '/food/San Diego, CA',
+		url: '/search/food/San Diego, CA',
 		type: 'GET',
 		dataType: 'json',
 		success: (data) => {
@@ -141,7 +152,7 @@ $('#discoverButton').click(() => {
 $('#d_hideButton').click(() => {
 	console.log('clicked!');
 	$.ajax({
-		url: '/food/San Diego, CA',
+		url: '/search/food/San Diego, CA',
 		type: 'GET',
 		dataType: 'json',
 		success: (data) => {
@@ -204,13 +215,13 @@ window.onload = function() {
  function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
-  var currentFocus;
+  let currentFocus;
 
 
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
 
-  	var a, b, i, val = this.value;
+  	let a, b, i, val = this.value;
 
 
   	/* ajax request to get the list of resturants*/
@@ -224,9 +235,9 @@ window.onload = function() {
 			//get the first business
 			arr = data.businesses;
 			//get only the names of the businesses
-			resultID = arr.map(r => r.id);
+			//resultID = arr.map(r => r.id);
 			//console.log("IDsss : " + idArr)
-			arr = arr.map(r => r.name);
+			//arr = arr.map(r => r.name);
 		}
 	});
 
@@ -249,15 +260,15 @@ window.onload = function() {
         	/*create a DIV element for each matching element:*/
         	b = document.createElement("DIV");
         	/*make the matching letters bold:*/
-        	b.innerHTML =  arr[i].substr(0, val.length);
-        	b.innerHTML += arr[i].substr(val.length);
+        	b.innerHTML =  arr[i].name.substr(0, val.length);
+        	b.innerHTML += arr[i].name.substr(val.length);
         	/*insert a input field that will hold the current array item's value:*/
-        	b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+        	b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
         	/*execute a function when someone clicks on the item value (DIV element):*/
         	b.addEventListener("click", function(e) {
         		/*insert the value for the autocomplete text field:*/
         		inp.value = this.getElementsByTagName("input")[0].value;
-						console.log("RESULT ID: " + resultID);
+						//console.log("RESULT ID: " + resultID);
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -270,7 +281,7 @@ window.onload = function() {
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
 
-  	var x = document.getElementById(this.id + "autocomplete-list");
+  	let x = document.getElementById(this.id + "autocomplete-list");
   	if (x) x = x.getElementsByTagName("div");
   	if (e.keyCode == 40) {
         /*If the arrow DOWN key is pressed,
@@ -313,7 +324,7 @@ window.onload = function() {
 
   function removeActive(x) {
   	/*a function to remove the "active" class from all autocomplete items:*/
-  	for (var i = 0; i < x.length; i++) {
+  	for (let i = 0; i < x.length; i++) {
   		x[i].classList.remove("autocomplete-active");
   	}
   }
@@ -321,8 +332,8 @@ window.onload = function() {
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
+    let x = document.getElementsByClassName("autocomplete-items");
+    for (let i = 0; i < x.length; i++) {
     	if (elmnt != x[i] && elmnt != inp) {
     		x[i].parentNode.removeChild(x[i]);
     	}
