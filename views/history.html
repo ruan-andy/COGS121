@@ -15,6 +15,7 @@
 
 
 	<script src="/js/history.js"></script>
+	<script src="/js/index.js"></script>
 
 </head>
 
@@ -24,12 +25,12 @@
 			<h1>Tinner</h1>
 
 			<div class="search-container">
-				<form autocomplete="off">
+
 					<div class="autocomplete" style="float: right;">
 						<input style="border-radius: 15px 0px 0px 15px" id="searchBox" type="text" name="search" placeholder="Search..">
 						<button style="border-radius: 0px 15px 15px 0px" id="searchButton" type="submit"><i class="fa fa-search"></i></button>
 					</div>
-				</form>
+				
 			</div>
 		</div>
 
@@ -45,6 +46,26 @@
 			<li class="nav-item">
 				<a class="nav-link" href="statistics.html">Statistics</a>
 		</ul>
+
+		<div id="searchResultBox" class="store-container">
+			<h3 id="s_title">Search Result: </h3>
+			<div class="name" id="s_name"></div>
+			<img class="pic" id="s_pic"></img>
+			<div class="address" id="s_address"></div>
+			<div class="centered" id="s_info"></div>
+			<div id="s_select"></div>
+
+			<div class="wrapper">
+				<button id="hideButton" class="btn-danger btn-lg">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+				<button id="addButton" class="btn-success btn-lg">
+				<span class="glyphicon glyphicon-heart"></span>
+			</button>
+
+			</div>
+		</div>
+
 	<h3>History</h3>
 	<!--<p class="noData">No places in history</p>-->
 	<div>

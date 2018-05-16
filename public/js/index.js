@@ -6,9 +6,11 @@ $(document).ready(() => {
 	$('#discoverBox').hide();
 	$('#profileInfo').hide();
 	$('#glogout').hide();
+	$('#searchResultBox').hide();
 
 	let prevNum = 0;
 	let businessID;
+	var resultID;
 
 	function getRandInteger(min, max) {
 		let num = 0;
@@ -57,7 +59,11 @@ $('#reloadButton').click(() => {
 $('#searchButton').click(() => {
 	console.log('search clicked!');
 	console.log(document.getElementById('searchBox'));
-	$.ajax({
+	$('#s_recom-data').html("");
+	$('#searchResultBox').show();
+	$('#s_name').html(resultID);
+	
+	/*$.ajax({
 		url: '/food/San Diego, CA',
 		type: 'GET',
 		dataType: 'json',
@@ -66,14 +72,14 @@ $('#searchButton').click(() => {
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
 			businessID = business.id;
-			$('#r_recom-data').html("");
-			$('#storeBox').show();
-			$('#r_name').html(business.name);
-			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
-			$('#r_info').html('Tags: ' + getTags(business.categories));
-			$('#r_address').html((business.location.display_address).join(', '));
+			$('#s_recom-data').html("");
+			$('#searchResultBox').show();
+			$('#s_name').html(business.name);
+			$('#s_pic').attr('src', business.image_url).attr('width', '300px');
+			$('#s_info').html('Tags: ' + getTags(business.categories));
+			$('#s_address').html((business.location.display_address).join(', '));
 		}
-	});
+	});*/
 });
 
 $('#r_hideButton').click(() => {
@@ -164,10 +170,15 @@ $('#addButton').click(() => {
 
 window.onload = function() {
   var startPos;
+	let currLocation = [];
   var geoSuccess = function(position) {
     startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    //document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    //document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+
+		currLocation.push(startPos.coords.latitude);
+		currLocation.push(startPos.coords.longitude);
+		console.log( "Loc: " + currLocation);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess);
 };
@@ -184,10 +195,12 @@ window.onload = function() {
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
 
+
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
 
   	var a, b, i, val = this.value;
+
 
   	/* ajax request to get the list of resturants*/
   	$.ajax({
@@ -196,10 +209,12 @@ window.onload = function() {
   		dataType: 'json',
   		async: false,
   		success: (data) => {
-  			console.log('ajax success!', data);
+  		//console.log('ajax success!', data);
 			//get the first business
 			arr = data.businesses;
 			//get only the names of the businesses
+			resultID = arr.map(r => r.id);
+			//console.log("IDsss : " + idArr)
 			arr = arr.map(r => r.name);
 		}
 	});
@@ -231,6 +246,7 @@ window.onload = function() {
         	b.addEventListener("click", function(e) {
         		/*insert the value for the autocomplete text field:*/
         		inp.value = this.getElementsByTagName("input")[0].value;
+						console.log("RESULT ID: " + resultID);
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();

@@ -66,6 +66,11 @@ button:hover {
 	display: inline;
 }
 
+#s_title {
+	float: center;
+	text-align: center;	
+}
+
 .nav-item {
 	background-color: #f7f7f7;
 }
