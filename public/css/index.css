@@ -21,7 +21,8 @@ img{
 }
 
 button {
-    background-color: #FFA0A0; /*light red*/
+		background-color:#ff7a9d;
+
     border: none;
     color: white;
     padding: 10px 40px;
@@ -30,6 +31,10 @@ button {
     display: inline-block;
     font-size: 16px;
 		border-radius: 15px;
+}
+
+button:hover {
+	background-color: #ff4f4f;
 }
 
 #d_hideButton {
@@ -52,6 +57,19 @@ button {
 	/*float: right;*/
 }
 
+#glogin {
+	float: right;
+	display: inline;
+}
+
+#fullName {
+	display: inline;
+}
+
+.nav-item {
+	background-color: #f7f7f7;
+}
+
 .wrapper {
 	text-align: center;
 	width: 600px;
@@ -59,7 +77,8 @@ button {
 }
 .store-container {
 	background: none;
-	background-color: #FFCBA0;
+	/*background-color: #FFCBA0;*/
+	background-color: #FFA0A0; /*light red*/
 	border-radius: 15px;
 	padding: 10px 10px;
 	height: 60vh;
