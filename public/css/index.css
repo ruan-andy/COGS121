@@ -53,7 +53,7 @@ button:hover {
 	width: 40%;
 }
 
-#addButton {
+.btn-lg {
 	/* background-color: #4CAF50; */
 	width: 40%;
 
@@ -94,6 +94,10 @@ button:hover {
 	padding: 10px 10px;
 	height: 60vh;
 	margin: auto;
+}
+
+#searchResultBox {
+	height: 70vh;
 }
 
 .name {

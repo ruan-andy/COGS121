@@ -32,6 +32,8 @@ $(document).ready(() => {
 	return str;
 }
 
+let rbusinessID;
+
 // clicking on show more
 $('#reloadButton').click(() => {
 	console.log('clicked!');
@@ -43,18 +45,20 @@ $('#reloadButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
+			rbusinessID = business.id;
 			$('#r_recom-data').html("");
 			$('#storeBox').show();
 			$('#r_name').html(business.name);
 			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
 			$('#r_info').html('Tags: ' + getTags(business.categories));
 			$('#r_address').html((business.location.display_address).join(', '));
-			$('#addButton').show();
+			$('#r_addButton').show();
 			$('#hideButton').show();
 		}
 	});
 });
+
+let restaurantID;
 
 // Search button for name
 $('#searchButton').click(() => {
@@ -64,7 +68,6 @@ $('#searchButton').click(() => {
 	const val = document.getElementById('searchBox').value;
 
 	/* Ajax request to get the restaurant using the name in the searchbar */
-	let restaurantID;
 	$.ajax({
   		url: '/search/' + val + '/32.8316115/-117.1626717',
   		type: 'GET',
@@ -110,14 +113,14 @@ $('#r_hideButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
+			rbusinessID = business.id;
 			$('#r_recom-data').html("");
 			$('#storeBox').show();
 			$('#r_name').html(business.name);
 			$('#r_pic').attr('src', business.image_url).attr('width', '300px');
 			$('#r_info').html('Tags: ' + getTags(business.categories));
 			$('#r_address').html((business.location.display_address).join(', '));
-			$('#addButton').show();
+			$('#r_addButton').show();
 			$('#hideButton').show();
 		}
 	});
@@ -126,6 +129,8 @@ $('#r_hideButton').click(() => {
 $('#s_hideButton').click(() => {
 	$('#searchResultBox').hide();
 });
+
+let dbusinessID;
 
 // clicking on discover
 $('#discoverButton').click(() => {
@@ -138,7 +143,7 @@ $('#discoverButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 19)];
-			businessID = business.id;
+			dbusinessID = business.id;
 			$('#d_recom-data').html("");
 			$('#discoverBox').show();
 			$('#d_name').html('Restaurant Name: ' + business.name);
@@ -159,7 +164,7 @@ $('#d_hideButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 19)];
-			businessID = business.id;
+			dbusinessID = business.id;
 			$('#d_recom-data').html("");
 			$('#discoverBox').show();
 			$('#d_name').html('Restaurant Name: ' + business.name);
@@ -171,16 +176,50 @@ $('#d_hideButton').click(() => {
 });
 
 // adding the restaurants shown above will add it to the database
-$('#addButton').click(() => {
+$('#r_addButton').click(() => {
 	console.log('clicked!');
-	console.log("businessID: " + businessID,);
+	console.log("businessID: " + rbusinessID,);
 	$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
       type: 'POST', // <-- this is POST, not GET
       data: {
       	//stores the business ID into the database
-      	name: businessID,
+      	name: rbusinessID,
+      },
+      success: (data) => {
+      	$('#status').html(data.message);
+      }
+  });
+});
+
+$('#d_addButton').click(() => {
+	console.log('clicked!');
+	console.log("businessID: " + dbusinessID,);
+	$.ajax({
+      // all URLs are relative to http://localhost:3000/
+      url: '/history',
+      type: 'POST', // <-- this is POST, not GET
+      data: {
+      	//stores the business ID into the database
+      	name: dbusinessID,
+      },
+      success: (data) => {
+      	$('#status').html(data.message);
+      }
+  });
+});
+
+$('#s_addButton').click(() => {
+	console.log('clicked!');
+	console.log("businessID: " + restaurantID,);
+	$.ajax({
+      // all URLs are relative to http://localhost:3000/
+      url: '/history',
+      type: 'POST', // <-- this is POST, not GET
+      data: {
+      	//stores the business ID into the database
+      	name: restaurantID,
       },
       success: (data) => {
       	$('#status').html(data.message);
