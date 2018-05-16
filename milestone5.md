@@ -9,7 +9,7 @@ The user can click on either the "Show me more" or "Discover" button and add a r
 
 The user can find the restaurants they have liked in the history section 
 
-![History](history shows added restauraunts)
+![History](https://github.com/ruan-andy/COGS121/blob/master/milestone5/history_page.png)
 
 
 ## User Action 2
@@ -19,4 +19,4 @@ The user can search for a restaurants they have visited using the search bar, an
 
 When clicking the search button, the result will show up in the UI and the user is able to either hide the restaurant or "Like" it and add it to their history
 
-![Search Result](search result box)
+![Search Result](https://github.com/ruan-andy/COGS121/blob/master/milestone5/search_result.png)
