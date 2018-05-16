@@ -1,5 +1,7 @@
 # Milestone 5
 
+For this milestone we improved on how we display restaurants to the user on the recommendations and history page and implemented our search bar so users can find restaurants that they have visited.
+
 ## User Action 1
 The user can click on either the "Show me more" or "Discover" button and add a restaurant to their history by clicking Like or hiding the restaurant by clicking Hide "X"
 
