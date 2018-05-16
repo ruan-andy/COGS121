@@ -8,7 +8,6 @@ $(document).ready(() => {
 	$('#glogout').hide();
 
 	let prevNum = 0;
-	let businessID;
 
 	function getRandInteger(min, max) {
 		let num = 0;
@@ -40,7 +39,6 @@ $('#reloadButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
 			$('#r_recom-data').html("");
 			$('#storeBox').show();
 			$('#r_name').html(business.name);
@@ -65,7 +63,6 @@ $('#searchButton').click(() => {
 			console.log('ajax success!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
 			$('#r_recom-data').html("");
 			$('#storeBox').show();
 			$('#r_name').html(business.name);
@@ -86,7 +83,6 @@ $('#r_hideButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 10)];
-			businessID = business.id;
 			$('#r_recom-data').html("");
 			$('#storeBox').show();
 			$('#r_name').html(business.name);
@@ -109,8 +105,8 @@ $('#discoverButton').click(() => {
 		success: (data) => {
 			console.log('ajax sucess!', data);
 			//get the first business
+			console.log(data.businesses.length)
 			const business = data.businesses[getRandInteger(0, 19)];
-			businessID = business.id;
 			$('#d_recom-data').html("");
 			$('#discoverBox').show();
 			$('#d_name').html('Restaurant Name: ' + business.name);
@@ -131,7 +127,6 @@ $('#d_hideButton').click(() => {
 			console.log('ajax sucess!', data);
 			//get the first business
 			const business = data.businesses[getRandInteger(0, 19)];
-			businessID = business.id;
 			$('#d_recom-data').html("");
 			$('#discoverBox').show();
 			$('#d_name').html('Restaurant Name: ' + business.name);
@@ -145,14 +140,14 @@ $('#d_hideButton').click(() => {
 // adding the restaurants shown above will add it to the database
 $('#addButton').click(() => {
 	console.log('clicked!');
-	console.log("businessID: " + businessID,);
+	console.log(document.getElementById('r_name').innerHTML);
+	const r_name = document.getElementById('r_name').innerHTML;
 	$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
       type: 'POST', // <-- this is POST, not GET
       data: {
-      	//stores the business ID into the database
-      	name: businessID,
+      	name: r_name,
       },
       success: (data) => {
       	$('#status').html(data.message);
