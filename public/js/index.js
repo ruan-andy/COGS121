@@ -112,6 +112,10 @@ $('#r_hideButton').click(() => {
 	});
 });
 
+$('#s_hideButton').click(() => {
+	$('#searchResultBox').hide();
+});
+
 // clicking on discover
 $('#discoverButton').click(() => {
 	console.log('clicked!');
