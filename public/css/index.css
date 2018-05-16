@@ -47,6 +47,12 @@ button:hover {
 	width: 40%;
 }
 
+#s_hideButton {
+  /* background-color: #f44336;
+  float: right; */
+	width: 40%;
+}
+
 #addButton {
 	/* background-color: #4CAF50; */
 	width: 40%;
@@ -68,7 +74,7 @@ button:hover {
 
 #s_title {
 	float: center;
-	text-align: center;	
+	text-align: center;
 }
 
 .nav-item {

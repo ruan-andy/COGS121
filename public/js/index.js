@@ -2,6 +2,7 @@ $(document).ready(() => {
 
 	$('#addButton').hide();
 	$('#hideButton').hide();
+//	$('#s_hideButton').hide();
 	$('#storeBox').hide();
 	$('#discoverBox').hide();
 	$('#profileInfo').hide();
@@ -62,7 +63,13 @@ $('#searchButton').click(() => {
 	$('#s_recom-data').html("");
 	$('#searchResultBox').show();
 	$('#s_name').html(resultID);
-	
+	//TODO
+	//$('#s_pic').attr('src', business.image_url).attr('width', '300px');
+	//$('#s_info').html('Tags: ' + getTags(business.categories));
+	//$('#s_address').html((business.location.display_address).join(', '));
+	$('#addButton').show();
+	$('#hideButton').show();
+
 	/*$.ajax({
 		url: '/food/San Diego, CA',
 		type: 'GET',
