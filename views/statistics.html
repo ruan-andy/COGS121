@@ -66,17 +66,38 @@
 	 <div id="mapid"></div>
 
 	 <script>
-	 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-	 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic2FudGg5NiIsImEiOiJjamhzbnBheWYwNHVlM3JyczhkOHg3azNvIn0.RAzDHQ9PNovJt2YpZ13YKQ', {
-	     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	     maxZoom: 18,
-	     id: 'mapbox.streets',
-	     accessToken: 'your.mapbox.access.token'
-	 }).addTo(mymap);
+	 //Getting user location
+	 let userLoc = [];
+	 window.onload = function() {
+	   var startPos;
+	 	let currLocation = [];
+	   var geoSuccess = function(position) {
+	     startPos = position;
+	     //document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+	     //document.getElementById('startLon').innerHTML = startPos.coords.longitude;
 
-	 var marker = L.marker([51.5, -0.09]).addTo(mymap);
-	 marker.bindPopup("<b>Hello world!</b><br>I am a popup.");//.openPopup();
-	  mymap.setZoom(2);
+	 		currLocation.push(startPos.coords.latitude);
+	 		currLocation.push(startPos.coords.longitude);
+	 		//console.log( "Loc: " + currLocation);
+			//userLoc = currLocation;
+			console.log( "Loc: " + userLoc);
+	 	 	let mymap = L.map('mapid').setView(currLocation, 13);
+		 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic2FudGg5NiIsImEiOiJjamhzbnBheWYwNHVlM3JyczhkOHg3azNvIn0.RAzDHQ9PNovJt2YpZ13YKQ', {
+		 	     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		 	     maxZoom: 18,
+		 	     id: 'mapbox.streets',
+		 	     accessToken: 'your.mapbox.access.token'
+		 	 }).addTo(mymap);
+
+	 	 	var marker = L.marker(currLocation).addTo(mymap);
+	 	 	marker.bindPopup("<b>Hello world!</b><br>I am a popup.");//.openPopup();
+	 	  mymap.setZoom(6);
+
+	   };
+	   navigator.geolocation.getCurrentPosition(geoSuccess);
+	 };
+
+
 	 </script>
 
 	<a href="index.html">Back to recommendations</a>
