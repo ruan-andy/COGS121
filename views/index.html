@@ -9,6 +9,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDNVzOUQvBdcRg_YmdXy7Zdpg5AHeHcuqM",
+	    authDomain: "cogs-121-1526357273020.firebaseapp.com",
+	    databaseURL: "https://cogs-121-1526357273020.firebaseio.com",
+	    projectId: "cogs-121-1526357273020",
+	    storageBucket: "",
+	    messagingSenderId: "721262169117"
+	  };
+	  firebase.initializeApp(config);
+	</script>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +32,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 
 	<script src="/js/index.js"></script>
+	<script src="/js/user.js"></script>
 </head>
 
 <div id="glogin">
@@ -36,6 +50,7 @@
 			function onSignIn(googleUser) {
 				// Useful data for your client-side scripts:
 				var profile = googleUser.getBasicProfile();
+				userName = profile.getName();
 				console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 				console.log('Full Name: ' + profile.getName());
 				$('#fullName').text(profile.getName());

@@ -1,6 +1,6 @@
 # Milestone6
 
-For this milestone, we worked towards displaying user restaurant statistics. We would like to show what types of restaurants users liked.
+For this milestone, we worked towards displaying user restaurant statistics. We would like to show what types of restaurants users liked. Also, history and statistics are saved into individual users.
 
 ##UI
 We didn't change the UI other than displaying statistics.
