@@ -194,7 +194,7 @@ $(document).ready(() => {
 		var d = new Date(dateString)
 		console.log(d.getMonth() + 1 + '/' + d.getDate() + '/' + d.getFullYear());
 
-    $.ajax({
+    /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
       type: 'POST', // <-- this is POST, not GET
@@ -205,13 +205,18 @@ $(document).ready(() => {
       success: (data) => {
         $('#status').html(data.message);
       }
-    });
+    });*/
   });
 
   $('#d_addButton').click(() => {
     console.log('clicked!');
     console.log("businessID: " + dbusinessID, );
-    $.ajax({
+
+		var dateString = Date.now();
+		console.log(dateString);
+		database.ref('users/' + userName + '/' + dateString ).set(dbusinessID);
+
+    /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
       type: 'POST', // <-- this is POST, not GET
@@ -222,13 +227,18 @@ $(document).ready(() => {
       success: (data) => {
         $('#status').html(data.message);
       }
-    });
+    });*/
   });
 
   $('#s_addButton').click(() => {
     console.log('clicked!');
     console.log("businessID: " + restaurantID, );
-    $.ajax({
+
+		var dateString = Date.now();
+		console.log(dateString);
+		database.ref('users/' + userName + '/' + dateString ).set(restaurantID);
+
+    /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
       type: 'POST', // <-- this is POST, not GET
@@ -239,7 +249,7 @@ $(document).ready(() => {
       success: (data) => {
         $('#status').html(data.message);
       }
-    });
+    });*/
   });
 
   //Getting user location
