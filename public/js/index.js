@@ -8,6 +8,7 @@ $(document).ready(() => {
   $('#profileInfo').hide();
   $('#glogout').hide();
   $('#searchResultBox').hide();
+	$('.alert').hide();
 
   let prevNum = 0;
   let businessID;
@@ -146,7 +147,7 @@ $(document).ready(() => {
         dbusinessID = business.id;
         $('#d_recom-data').html("");
         $('#discoverBox').show();
-        $('#d_name').html('Restaurant Name: ' + business.name);
+        $('#d_name').html(business.name);
         $('#d_pic').attr('src', business.image_url).attr('width', '300px');
         $('#d_info').html('Tags: ' + getTags(business.categories));
         $('#d_address').html('Address: ' + (business.location.display_address).join(', '));
@@ -167,7 +168,7 @@ $(document).ready(() => {
         dbusinessID = business.id;
         $('#d_recom-data').html("");
         $('#discoverBox').show();
-        $('#d_name').html('Restaurant Name: ' + business.name);
+        $('#d_name').html( business.name);
         $('#d_pic').attr('src', business.image_url).attr('width', '300px');
         $('#d_info').html('Tags: ' + getTags(business.categories));
         $('#d_address').html('Address: ' + (business.location.display_address).join(', '));
@@ -194,6 +195,8 @@ $(document).ready(() => {
 		var d = new Date(dateString)
 		console.log(d.getMonth() + 1 + '/' + d.getDate() + '/' + d.getFullYear());
 
+		$('#alertsuccess').show();
+
     /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
@@ -216,6 +219,8 @@ $(document).ready(() => {
 		console.log(dateString);
 		database.ref('users/' + userName + '/' + dateString ).set(dbusinessID);
 
+			$('#alertsuccess').show();
+
     /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
@@ -237,6 +242,8 @@ $(document).ready(() => {
 		var dateString = Date.now();
 		console.log(dateString);
 		database.ref('users/' + userName + '/' + dateString ).set(restaurantID);
+
+			$('#alertsuccess').show();
 
     /*$.ajax({
       // all URLs are relative to http://localhost:3000/
@@ -334,6 +341,7 @@ $(document).ready(() => {
         b.addEventListener("click", function(e) {
           /*insert the value for the autocomplete text field:*/
           inp.value = this.getElementsByTagName("input")[0].value;
+					document.getElementById("searchButton").style.background = "green";
           //console.log("RESULT ID: " + resultID);
           /*close the list of autocompleted values,
           (or any other open lists of autocompleted values:*/
