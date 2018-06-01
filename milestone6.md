@@ -1,6 +1,6 @@
 # Milestone6
 
-For this milestone, we worked towards displaying user restaurant statistics. We would like to show what types of restaurants users liked. Also, history and statistics are saved into individual users.
+For this milestone, we worked towards displaying user restaurant statistics. We would like to show what types of restaurants users liked. Also, history and statistics are saved into individual users, by integrating Firebase into our project.
 
 ## UI
 We didn't change the UI other than displaying statistics.
@@ -13,5 +13,5 @@ We didn't change the UI other than displaying statistics.
 ![Search Result](https://github.com/ruan-andy/COGS121/blob/master/milestone5/search_result.png)
 
 ## Data Visualization
-Here is our data statistics.
+On the statistics page we show various visualizations of the categories of restaurants the user has visited and the locations they have visited marked on a map.
 ![stat](https://github.com/ruan-andy/COGS121/blob/master/milestone6/statistics.png)
