@@ -35,51 +35,67 @@ $(document).ready(() => {
 
   console.log('user ' + userName);
 function setCat() {
-  
+
 }
 
   let rbusinessID;
 
+
+	    database.ref('users/' + userName).once('value', (snapshot) => {
+	    const data = snapshot.val();
+
+	    //check if the user has liked any restaurant
+	    if (!(snapshot.exists())) {
+	      $('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
+	      return;
+	    }
+
+	    //array of all the restaurants
+	    let restArr = Object.keys(data);
+	    let randCat;
+
+	    /* Ajax request to pick a random category from a random restaurant */
+	    $.ajax({
+	      //pick a random restaurant from the user's list of restaurants
+	      url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
+	      type: 'GET',
+	      dataType: 'json',
+	      async: false,
+	      success: (restaurant) => {
+	          let catLength = restaurant.categories.length;
+	          //pick a random category
+	          randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
+	          console.log(randCat);
+	        }
+	      });
+
   // clicking on show more
   $('#reloadButton').click(() => {
 
-    database.ref('users/' + userName).once('value', (snapshot) => {
-    const data = snapshot.val();
-
-    //check if the user has liked any restaurant
-    if (!(snapshot.exists())) {
-      $('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
-      return;
-    }
-
-    //array of all the restaurants
-    let restArr = Object.keys(data);
-    let randCat;
-
-    /* Ajax request to pick a random category from a random restaurant */
-    $.ajax({
-      //pick a random restaurant from the user's list of restaurants
-      url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
-      type: 'GET',
-      dataType: 'json',
-      async: false,
-      success: (restaurant) => {
-          let catLength = restaurant.categories.length;
-          //pick a random category
-          randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
-          console.log(randCat);
-        }
-      });
+		$.ajax({
+			//pick a random restaurant from the user's list of restaurants
+			url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
+			type: 'GET',
+			dataType: 'json',
+			async: false,
+			success: (restaurant) => {
+					let catLength = restaurant.categories.length;
+					//pick a random category
+					randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
+					console.log(randCat);
+				}
+			});
 
     //Ajax request to display a random restaurant from the random category
     $.ajax({
       url: '/search/'+ randCat +'/San Diego, CA',
       type: 'GET',
       dataType: 'json',
-      success: (data) => {
-        console.log('ajax sucess!', data);
+      success: (datar) => {
+        console.log('ajax sucess!', datar);
         //get the first business
-        const business = data.businesses[getRandInteger(0, 10)];
+				console.log(datar.businesses.length);
+        const business = datar.businesses[getRandInteger(0, datar.businesses.length-1)];
         rbusinessID = business.id;
         $('#r_recom-data').html("");
         $('#storeBox').show();
