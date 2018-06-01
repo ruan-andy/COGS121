@@ -33,44 +33,47 @@ $(document).ready(() => {
     return str;
   }
 
-	let cat = [];
   console.log('user ' + userName);
 function setCat() {
-  database.ref('users/' + userName).once('value', (snapshot) => {
-    const data = snapshot.val();
-
-    for (i in data) {
-      /* Ajax request to get the name of the given ID */
-      $.ajax({
-        url: '/business/' + data[i],
-        type: 'GET',
-        dataType: 'json',
-        async: false,
-        success: (restaurant) => {
-          for (const c of restaurant.categories) {
-						cat.push(c.title);
-
-          }
-        }
-      });
-    }
-	});
+  
 }
-
-	console.log(cat);
 
   let rbusinessID;
 
   // clicking on show more
   $('#reloadButton').click(() => {
-    console.log('clicked!');
-		setCat();
-		if(cat.length==0) {
-			$('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
-			return;
-		}
+
+    database.ref('users/' + userName).once('value', (snapshot) => {
+    const data = snapshot.val();
+
+    //check if the user has liked any restaurant
+    if (!(snapshot.exists())) {
+      $('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
+      return;
+    }
+
+    //array of all the restaurants
+    let restArr = Object.keys(data);
+    let randCat;
+
+    /* Ajax request to pick a random category from a random restaurant */
     $.ajax({
-      url: '/search/'+cat[getRandInteger(0,cat.length)]+'/San Diego, CA',
+      //pick a random restaurant from the user's list of restaurants
+      url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
+      type: 'GET',
+      dataType: 'json',
+      async: false,
+      success: (restaurant) => {
+          let catLength = restaurant.categories.length;
+          //pick a random category
+          randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
+          console.log(randCat);
+        }
+      });
+
+    //Ajax request to display a random restaurant from the random category
+    $.ajax({
+      url: '/search/'+ randCat +'/San Diego, CA',
       type: 'GET',
       dataType: 'json',
       success: (data) => {
@@ -88,6 +91,8 @@ function setCat() {
         $('#hideButton').show();
       }
     });
+
+    })
   });
 
   let restaurantID;
