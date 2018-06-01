@@ -36,78 +36,74 @@ $(document).ready(() => {
     return str;
   }
 
-  console.log('user ' + userName);
-function setCat() {
+  function getNewRec() {
+    database.ref('users/' + userName).once('value', (snapshot) => {
+      const data = snapshot.val();
+      console.log(userName);
+      //check if the user has liked any restaurant
+      if (!(snapshot.exists()) || userName === 'none') {
+        $('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
+        return;
+      }
 
-}
+      //array of all the restaurants
+      let restArr = Object.keys(data);
+      let randCat;
 
-  let rbusinessID;
+      /* Ajax request to pick a random category from a random restaurant */
+      $.ajax({
+        //pick a random restaurant from the user's list of restaurants
+        url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: (restaurant) => {
+          let catLength = restaurant.categories.length;
+            //pick a random category
+            randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
+            console.log(randCat);
+          }
+        });
 
-
-	    database.ref('users/' + userName).once('value', (snapshot) => {
-	    const data = snapshot.val();
-
-	    //check if the user has liked any restaurant
-	    if (!(snapshot.exists())) {
-	      $('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
-	      return;
-	    }
-
-	    //array of all the restaurants
-	    let restArr = Object.keys(data);
-	    let randCat;
-
-	    /* Ajax request to pick a random category from a random restaurant */
-	    $.ajax({
-	      //pick a random restaurant from the user's list of restaurants
-	      url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
-	      type: 'GET',
-	      dataType: 'json',
-	      async: false,
-	      success: (restaurant) => {
-	          let catLength = restaurant.categories.length;
-	          //pick a random category
-	          randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
-	          console.log(randCat);
-	        }
-	      });
-
-  // clicking on show more
-  $('#reloadButton').click(() => {
-
-		$.ajax({
-			//pick a random restaurant from the user's list of restaurants
-			url: '/business/' + data[restArr[getRandInteger(0, restArr.length - 1)]],
-			type: 'GET',
-			dataType: 'json',
-			async: false,
-			success: (restaurant) => {
-					let catLength = restaurant.categories.length;
-					//pick a random category
-					randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
-					console.log(randCat);
-				}
-			});
+      //Ajax request to display a random restaurant from the random category
+      $.ajax({
+        url: '/search/'+ randCat +'/San Diego, CA',
+        type: 'GET',
+        dataType: 'json',
+        success: (data) => {
+          console.log('ajax sucess!', data);
+          //get the first business
+          const business = data.businesses[getRandInteger(0, 10)];
+          rbusinessID = business.id;
+          $('#r_recom-data').html("");
+          $('#storeBox').show();
+          $('#r_name').html(business.name);
+          $('#r_pic').attr('src', business.image_url).attr('width', '300px');
+          $('#r_info').html('Tags: ' + getTags(business.categories));
+          $('#r_address').html((business.location.display_address).join(', '));
+          $('#r_addButton').show();
+          $('#hideButton').show();
+        }
+      });
+    })
+  }
 
   function getNewDis() {
     $.ajax({
       url: '/search/food/San Diego, CA',
       type: 'GET',
       dataType: 'json',
-      success: (datar) => {
-        console.log('ajax sucess!', datar);
+      success: (data) => {
+        console.log('ajax sucess!', data);
         //get the first business
-				console.log(datar.businesses.length);
-        const business = datar.businesses[getRandInteger(0, datar.businesses.length-1)];
-        rbusinessID = business.id;
-        $('#r_recom-data').html("");
-        $('#storeBox').show();
-        $('#r_name').html(business.name);
-        $('#r_pic').attr('src', business.image_url).attr('width', '300px');
-        $('#r_info').html('Tags: ' + getTags(business.categories));
-        $('#r_address').html((business.location.display_address).join(', '));
-        $('#r_addButton').show();
-        $('#hideButton').show();
+        const business = data.businesses[getRandInteger(0, 19)];
+        dbusinessID = business.id;
+        $('#d_recom-data').html("");
+        $('#discoverBox').show();
+        $('#d_name').html(business.name);
+        $('#d_pic').attr('src', business.image_url).attr('width', '300px');
+        $('#d_info').html('Tags: ' + getTags(business.categories));
+        $('#d_address').html('Address: ' + (business.location.display_address).join(', '));
       }
     });
   }
