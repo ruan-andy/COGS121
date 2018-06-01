@@ -99,7 +99,14 @@
 					const data = snapshot.val();
 					console.log("data " + data);
 					$('#alertloading').hide();
+					var d;
+					var secs;
+					var dStr;
 					for (i in data) {
+
+						d = new Date(parseInt(i));
+						dStr = '<strong>' + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear() +'</strong>' + ' - ';
+						console.log(dStr);
 						/* Ajax request to get the name of the given ID */
 						$.ajax({
 							url: '/business/' + data[i],
@@ -107,8 +114,11 @@
 							dataType: 'json',
 							async: false,
 							success: (restaurant) => {
-								$('#history_list').append('<li>' + restaurant.name + '<br>' +
-									'<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');
+								//console.log(dStr);
+
+
+								$('#history_list').append('<div id="historyBox" class="history-container">' + dStr + '<strong>' + restaurant.name + '</strong>' + '<br>' + '<br>' +
+									'<img src=\"' + restaurant.image_url + '\"' + 'height=300px' + '/>' + '</div>' + '<br>');
 							}
 						})
 					}

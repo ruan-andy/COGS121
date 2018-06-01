@@ -117,6 +117,17 @@ button:hover {
 	margin: auto;
 }
 
+.history-container {
+	background: none;
+	/*background-color: #FFCBA0;*/
+	background-color: #f7f7f7;
+	border-radius: 15px;
+	padding: 10px 10px;
+	height: auto;
+	margin: auto;
+	text-align: center;
+}
+
 #searchResultBox {
 	height: 70vh;
 }
