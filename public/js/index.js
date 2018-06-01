@@ -35,6 +35,7 @@ $(document).ready(() => {
 
 	let cat = [];
   console.log('user ' + userName);
+function setCat() {
   database.ref('users/' + userName).once('value', (snapshot) => {
     const data = snapshot.val();
 
@@ -54,6 +55,7 @@ $(document).ready(() => {
       });
     }
 	});
+}
 
 	console.log(cat);
 
@@ -62,6 +64,11 @@ $(document).ready(() => {
   // clicking on show more
   $('#reloadButton').click(() => {
     console.log('clicked!');
+		setCat();
+		if(cat.length==0) {
+			$('#r_recom-data').html("You have no liked restaurants. Discover new cuisine.");
+			return;
+		}
     $.ajax({
       url: '/search/'+cat[getRandInteger(0,cat.length)]+'/San Diego, CA',
       type: 'GET',
