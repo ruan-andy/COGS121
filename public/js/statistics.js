@@ -9,7 +9,6 @@ function getRandomColor() {
 
 //put the user's category and likes into catLikes, preferably sorted
 let catLikes = {};
-
 function populatePlot () {
   //DATABASE
   const database = firebase.database();
@@ -30,14 +29,13 @@ function populatePlot () {
             if (c.title in catLikes) catLikes[c.title]++;
             else catLikes[c.title] = 1;
           }
-
           /*for (t in getTags(restaurant.categories)) {
             if (t in catLikes) console.log("Im in it");
             else console.log("Tag not in catlikes");
           }*/
 
           /*$('#history_list').append('<li>' + restaurant.name + '<br>' +
-          	'<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');*/
+          '<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');*/
         }
       })
     }
@@ -57,22 +55,16 @@ function populatePlot () {
       };
       catdata.push(trace);
     }
-
     var layout = {
       title: 'Visited Restaurants',
       barmode: 'stack'      
     };
 
-
     Plotly.newPlot('myDiv', catdata, layout);
     console.log("Plotted plot!");
     //mymap.setView(markersLayer.getBounds().getCenter());
   });
-
-
-
 }
-
 
 
 
