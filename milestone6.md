@@ -14,4 +14,4 @@ We didn't change the UI other than displaying statistics.
 
 ## Data Visualization
 Here is our data statistics.
-![stat](https://github.com/ruan-andy/COGS121/blob/master/milestone6/tins.png)
+![stat](https://github.com/ruan-andy/COGS121/blob/master/milestone6/statistics.png)
