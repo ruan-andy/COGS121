@@ -33,13 +33,37 @@ $(document).ready(() => {
     return str;
   }
 
+	let cat = [];
+  console.log('user ' + userName);
+  database.ref('users/' + userName).once('value', (snapshot) => {
+    const data = snapshot.val();
+
+    for (i in data) {
+      /* Ajax request to get the name of the given ID */
+      $.ajax({
+        url: '/business/' + data[i],
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: (restaurant) => {
+          for (const c of restaurant.categories) {
+						cat.push(c.title);
+
+          }
+        }
+      });
+    }
+	});
+
+	console.log(cat);
+
   let rbusinessID;
 
   // clicking on show more
   $('#reloadButton').click(() => {
     console.log('clicked!');
     $.ajax({
-      url: '/search/BBQ/San Diego, CA',
+      url: '/search/'+cat[getRandInteger(0,cat.length)]+'/San Diego, CA',
       type: 'GET',
       dataType: 'json',
       success: (data) => {
