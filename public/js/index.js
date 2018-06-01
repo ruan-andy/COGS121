@@ -228,6 +228,27 @@ function setCat() {
 
 		$('#alertsuccess').show();
 
+    /** refresh the list **/
+    $.ajax({
+      url: '/search/'+cat[getRandInteger(0,cat.length)]+'/San Diego, CA',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        console.log('ajax sucess!', data);
+        //get the first business
+        const business = data.businesses[getRandInteger(0, 10)];
+        rbusinessID = business.id;
+        $('#r_recom-data').html("");
+        $('#storeBox').show();
+        $('#r_name').html(business.name);
+        $('#r_pic').attr('src', business.image_url).attr('width', '300px');
+        $('#r_info').html('Tags: ' + getTags(business.categories));
+        $('#r_address').html((business.location.display_address).join(', '));
+        $('#r_addButton').show();
+        $('#hideButton').show();
+      }
+    });
+
     /*$.ajax({
       // all URLs are relative to http://localhost:3000/
       url: '/history',
@@ -250,7 +271,26 @@ function setCat() {
 		console.log(dateString);
 		database.ref('users/' + userName + '/' + dateString ).set(dbusinessID);
 
-			$('#alertsuccess').show();
+		$('#alertsuccess').show();
+
+    /** refresh the list **/
+    $.ajax({
+      url: '/search/food/San Diego, CA',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        console.log('ajax sucess!', data);
+        //get the first business
+        const business = data.businesses[getRandInteger(0, 19)];
+        dbusinessID = business.id;
+        $('#d_recom-data').html("");
+        $('#discoverBox').show();
+        $('#d_name').html( business.name);
+        $('#d_pic').attr('src', business.image_url).attr('width', '300px');
+        $('#d_info').html('Tags: ' + getTags(business.categories));
+        $('#d_address').html('Address: ' + (business.location.display_address).join(', '));
+      }
+    });
 
     /*$.ajax({
       // all URLs are relative to http://localhost:3000/
