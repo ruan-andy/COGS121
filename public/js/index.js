@@ -90,7 +90,7 @@ $(document).ready(() => {
 
   function getNewDis() {
     $.ajax({
-      url: '/search/food/San Diego, CA',
+      url: '/search/food/San Diego, CA/' + getRandInteger(0,100),
       type: 'GET',
       dataType: 'json',
       success: (data) => {
