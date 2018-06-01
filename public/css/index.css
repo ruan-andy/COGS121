@@ -77,7 +77,7 @@ button:hover {
 	text-align: center;
 }
 
-.alert {
+#alertsuccess{
     padding: 20px;
     background-color: #4CAF50;
     color: white;

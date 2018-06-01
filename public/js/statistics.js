@@ -8,29 +8,74 @@ function getRandomColor() {
 }
 
 //put the user's category and likes into catLikes, preferably sorted
-let catLikes = {'bbq':20,'burger':12, 'chinese':10, 'mexican':7};
+let catLikes = {};
 
-let data=[];
-for(const cat in catLikes) {
-  let trace = {
-    x: [catLikes[cat]],
-    y: ['Category'],
-    name: cat,
-    orientation: 'h',
-    marker: {
-      color: getRandomColor(),
-      width: 1
-    },
-    type: 'bar'
-  };
-  data.push(trace);
+function populatePlot () {
+  //DATABASE
+  const database = firebase.database();
+  console.log('user ' + userName);
+  database.ref('users/' + userName).once('value', (snapshot) => {
+    const data = snapshot.val();
+
+    for (i in data) {
+      /* Ajax request to get the name of the given ID */
+      $.ajax({
+        url: '/business/' + data[i],
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: (restaurant) => {
+          for (const c of restaurant.categories) {
+            //console.log(c.title);
+            if (c.title in catLikes) catLikes[c.title]++;
+            else catLikes[c.title] = 1;
+          }
+
+          /*for (t in getTags(restaurant.categories)) {
+            if (t in catLikes) console.log("Im in it");
+            else console.log("Tag not in catlikes");
+          }*/
+
+          /*$('#history_list').append('<li>' + restaurant.name + '<br>' +
+          	'<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');*/
+        }
+      })
+    }
+
+    let catdata = [];
+    for (const cat in catLikes) {
+      let trace = {
+        x: [catLikes[cat]],
+        y: ['Category'],
+        name: cat,
+        orientation: 'h',
+        marker: {
+          color: getRandomColor(),
+          width: 1
+        },
+        type: 'bar'
+      };
+      catdata.push(trace);
+    }
+
+    var layout = {
+      title: 'Visited Restaurants',
+      barmode: 'stack'      
+    };
+
+
+    Plotly.newPlot('myDiv', catdata, layout);
+    console.log("Plotted plot!");
+    //mymap.setView(markersLayer.getBounds().getCenter());
+  });
+
+
+
 }
 
-var layout = {
-  title: 'Liked Restaurants',
-  barmode: 'stack'
-};
+
+
 
 $(document).ready(() => {
-  Plotly.newPlot('myDiv', data, layout);
+  //Plotly.newPlot('myDiv', data, layout);
 });

@@ -8,7 +8,7 @@ $(document).ready(() => {
   $('#profileInfo').hide();
   $('#glogout').hide();
   $('#searchResultBox').hide();
-	$('.alert').hide();
+	$('#alertsuccess').hide();
 
   let prevNum = 0;
   let businessID;

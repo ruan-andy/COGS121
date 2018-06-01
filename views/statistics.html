@@ -83,6 +83,7 @@
 				$('#gloginbutton').hide();
 
 				getUserLocation();
+				populatePlot();
 
 
 			};
@@ -187,7 +188,7 @@
  						async: false,
  						success: (restaurant) => {
 							let restaurantLoc = [restaurant.coordinates.latitude, restaurant.coordinates.longitude]
-							console.log(restaurantLoc);
+							//console.log(restaurantLoc);
 							var marker = L.marker(restaurantLoc).addTo(mymap);
 							markerArr.push(marker);
 						  marker.bindPopup(restaurant.name).openPopup();

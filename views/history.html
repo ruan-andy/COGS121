@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html>
+
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Tinner History</title>
@@ -31,6 +32,33 @@
 	<script src="/js/history.js"></script>
 	<script src="/js/index.js"></script>
 	<script src="/js/user.js"></script>
+
+	<style>
+		#alertloading {
+			padding: 20px;
+			background-color: #2196F3;
+			color: white;
+			opacity: 1;
+			transition: opacity 0.6s;
+			margin-bottom: 15px;
+		}
+
+
+		.closebtn {
+			margin-left: 15px;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 22px;
+			line-height: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		.closebtn:hover {
+			color: black;
+		}
+	</style>
 
 </head>
 <div id="glogin">
@@ -64,11 +92,13 @@
 				$('#glogout').show();
 				$('#gloginbutton').hide();
 
+
 				const database = firebase.database();
-			console.log('user ' + userName);
-			  database.ref('users/' + userName).once('value', (snapshot) => {
-			    const data = snapshot.val();
-			    console.log("data " + data);
+				console.log('user ' + userName);
+				database.ref('users/' + userName).once('value', (snapshot) => {
+					const data = snapshot.val();
+					console.log("data " + data);
+					$('#alertloading').hide();
 					for (i in data) {
 						/* Ajax request to get the name of the given ID */
 						$.ajax({
@@ -82,7 +112,7 @@
 							}
 						})
 					}
-			  });
+				});
 			};
 		</script>
 	</body>
@@ -162,15 +192,23 @@
 			</div>
 		</div>
 
-	<h3>History</h3>
-	<!--<p class="noData">No places in history</p>-->
-	<div>
-		<ol id="history_list">
-		</ol>
-	</div>
+		<div class="alert info" id="alertloading">
+			<span class="closebtn">&times;</span>
+			<strong>Loading...</strong> your restaurant history
+		</div>
 
-	<a href="index.html">Back to recommendations</a>
-	<br>
-	<div id="restaurants"></div>
+		<h3>History</h3>
+		<!--<p class="noData">No places in history</p>-->
+
+
+		<div>
+			<ol id="history_list">
+			</ol>
+		</div>
+
+		<a href="index.html">Back to recommendations</a>
+		<br>
+		<div id="restaurants"></div>
 </body>
+
 </html>
