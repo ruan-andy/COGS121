@@ -15,7 +15,7 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('users.db');
 
 
-app.get('/search/:name/:location/:offset', (req, res) => {
+app.get('/search/rec/:name/:location/:offset', (req, res) => {
 
   	client.search({
   		term: req.params.name,

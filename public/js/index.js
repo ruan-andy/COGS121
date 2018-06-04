@@ -67,7 +67,7 @@ $(document).ready(() => {
 
       //Ajax request to display a random restaurant from the random category
       $.ajax({
-        url: '/search/'+ randCat +'/San Diego, CA',
+        url: '/search/rec/'+ randCat +'/San Diego, CA/0',
         type: 'GET',
         dataType: 'json',
         success: (data) => {
@@ -90,7 +90,7 @@ $(document).ready(() => {
 
   function getNewDis() {
     $.ajax({
-      url: '/search/food/San Diego, CA/' + getRandInteger(0,100),
+      url: '/search/rec/food/San Diego, CA/' + getRandInteger(0,100),
       type: 'GET',
       dataType: 'json',
       success: (data) => {
