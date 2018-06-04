@@ -15,11 +15,12 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('users.db');
 
 
-app.get('/search/:name/:location', (req, res) => {
+app.get('/search/rec/:name/:location/:offset', (req, res) => {
 
   	client.search({
   		term: req.params.name,
-  		location: req.params.location
+  		location: req.params.location,
+      offset: req.params.offset
 	}).then(response => {
   		console.log("Sending the list of businesses");
   		res.send(response.jsonBody);
