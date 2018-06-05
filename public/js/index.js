@@ -1,3 +1,5 @@
+/* INDEX.JS - Gets recommendations based on history, get new restaurants for discover section, and implements search bar autocomplete */
+
 $(document).ready(() => {
   const database = firebase.database();
   $('#addButton').hide();

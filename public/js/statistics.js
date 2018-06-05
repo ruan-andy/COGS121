@@ -1,3 +1,6 @@
+/* STATISTICS.JS - Populates data visualizations based on user history */
+
+
 //gets random color for plots
 function getRandomColor() {
   var letters = '0123456789ABCDEF';

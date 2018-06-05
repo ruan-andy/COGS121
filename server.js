@@ -1,3 +1,5 @@
+// SERVER.JS - Server backend
+
 //use express
 const express = require('express');
 const app = express();
@@ -109,5 +111,3 @@ app.get('/example/:storeid', (req, res) => {
   if(val) res.send(val);
   else res.send({});
 });*/
-
-
