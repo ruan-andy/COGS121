@@ -10,16 +10,16 @@
 
 	<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyDNVzOUQvBdcRg_YmdXy7Zdpg5AHeHcuqM",
-	    authDomain: "cogs-121-1526357273020.firebaseapp.com",
-	    databaseURL: "https://cogs-121-1526357273020.firebaseio.com",
-	    projectId: "cogs-121-1526357273020",
-	    storageBucket: "",
-	    messagingSenderId: "721262169117"
-	  };
-	  firebase.initializeApp(config);
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyDNVzOUQvBdcRg_YmdXy7Zdpg5AHeHcuqM",
+			authDomain: "cogs-121-1526357273020.firebaseapp.com",
+			databaseURL: "https://cogs-121-1526357273020.firebaseio.com",
+			projectId: "cogs-121-1526357273020",
+			storageBucket: "",
+			messagingSenderId: "721262169117"
+		};
+		firebase.initializeApp(config);
 	</script>
 
 	<meta charset="utf-8">
@@ -101,10 +101,10 @@
 
 			<div class="search-container">
 
-					<div class="autocomplete" style="float: right;">
-						<input style="border-radius: 15px 0px 0px 15px" id="searchBox" type="text" name="search" placeholder="Search..">
-						<button style="border-radius: 0px 15px 15px 0px" id="searchButton" ><i class="fa fa-search"></i></button>
-					</div>
+				<div class="autocomplete" style="float: right;">
+					<input style="border-radius: 15px 0px 0px 15px" id="searchBox" type="text" name="search" placeholder="Search..">
+					<button style="border-radius: 0px 15px 15px 0px" id="searchButton"><i class="fa fa-search"></i></button>
+				</div>
 
 			</div>
 		</div>
@@ -125,10 +125,9 @@
 
 		<br>
 		<div class="alert sucess" id="alertsuccess">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  Restaurant added to history.
-	<br>
-  </div>
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> Restaurant added to history.
+			<br>
+		</div>
 
 
 		<div id="searchResultBox" class="store-container">
@@ -150,7 +149,7 @@
 			</div>
 		</div>
 
-<br>
+		<br>
 
 		<div class="container recom-container">
 			<button id="reloadButton">Show me more</button>
@@ -205,23 +204,6 @@
 			</div>
 		</div>
 
-		<!--<div class="storeBox">
-		<div id="name"></div>
-		<img id="pic"></img>
-		<div id="address"></div>
-		<div id="info"></div>
-		<div id="select"></div>
-		<button id="addButton">+</button>
-		<button id="hideButton">X</button>
-	</div>-->
-
-		<!-- <h3>History</h3>
-	<p class="noData">No places in history</p>
-	<a href="history.html">See more</a>
-
-	<h3>Statistics</h3>
-	<p class="noData">Statistics coming soon</p>
-	<a href="statistics.html">See more</a> -->
 
 	</div>
 </body>

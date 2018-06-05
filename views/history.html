@@ -29,10 +29,11 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 
 
-	<script src="/js/history.js"></script>
+
 	<script src="/js/index.js"></script>
 	<script src="/js/user.js"></script>
 
+	<!-- Status message style -->
 	<style>
 		#alertloading {
 			padding: 20px;
@@ -61,6 +62,8 @@
 	</style>
 
 </head>
+
+<!-- Google Login -->
 <div id="glogin">
 	<html lang="en">
 
@@ -93,6 +96,7 @@
 				$('#gloginbutton').hide();
 
 
+				// Populate History list from Firebase now that Google login is complete
 				const database = firebase.database();
 				console.log('user ' + userName);
 				database.ref('users/' + userName).once('value', (snapshot) => {
@@ -105,7 +109,7 @@
 					for (i in data) {
 
 						d = new Date(parseInt(i));
-						dStr = '<strong>' + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear() +'</strong>' + ' - ';
+						dStr = '<strong>' + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear() + '</strong>' + ' - ';
 						console.log(dStr);
 						/* Ajax request to get the name of the given ID */
 						$.ajax({
@@ -114,7 +118,7 @@
 							dataType: 'json',
 							async: false,
 							success: (restaurant) => {
-								//console.log(dStr);
+
 
 
 								$('#history_list').append('<div id="historyBox" class="history-container">' + dStr + '<strong>' + restaurant.name + '</strong>' + '<br>' + '<br>' +
@@ -134,7 +138,7 @@
 		<h4 id="fullName"></h4>
 	</div>
 
-
+	<!-- Handles what to do on google logout -->
 	<div id="glogout">
 		<a href="#" onclick="signOut();">Sign out</a>
 		<script>
@@ -158,14 +162,6 @@
 		<div class="jumbotron">
 			<h1>Tinner</h1>
 
-			<!-- <div class="search-container">
-
-					<div class="autocomplete" style="float: right;">
-						<input style="border-radius: 15px 0px 0px 15px" id="searchBox" type="text" name="search" placeholder="Search..">
-						<button style="border-radius: 0px 15px 15px 0px" id="searchButton" ><i class="fa fa-search"></i></button>
-					</div>
-
-			</div> -->
 		</div>
 
 		<br>
@@ -183,34 +179,16 @@
 
 		<br>
 
-		<div id="searchResultBox" class="store-container">
-			<h3 id="s_title">Search Result: </h3>
-			<div class="name" id="s_name"></div>
-			<img class="pic" id="s_pic"></img>
-			<div class="address" id="s_address"></div>
-			<div class="centered" id="s_info"></div>
-			<div id="s_select"></div>
 
-			<div class="wrapper">
-				<button id="hideButton" class="btn-danger btn-lg">
-				<span class="glyphicon glyphicon-remove"></span>
-			</button>
-				<button id="addButton" class="btn-success btn-lg">
-				<span class="glyphicon glyphicon-heart"></span>
-			</button>
-
-			</div>
-		</div>
-
+		<!-- Status Message -->
 		<div class="alert info" id="alertloading">
 			<span class="closebtn">&times;</span>
 			<strong>Loading...</strong> your restaurant history
 		</div>
 
 		<h3>History</h3>
-		<!--<p class="noData">No places in history</p>-->
 
-
+		<!-- List of restaurants visited -->
 		<div>
 			<ol id="history_list">
 			</ol>

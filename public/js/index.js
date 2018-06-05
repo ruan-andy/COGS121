@@ -1,5 +1,5 @@
 $(document).ready(() => {
-	const database = firebase.database();
+  const database = firebase.database();
   $('#addButton').hide();
   $('#hideButton').hide();
   //	$('#s_hideButton').hide();
@@ -59,15 +59,15 @@ $(document).ready(() => {
         async: false,
         success: (restaurant) => {
           let catLength = restaurant.categories.length;
-            //pick a random category
-            randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
-            console.log(randCat);
-          }
-        });
+          //pick a random category
+          randCat = restaurant.categories[getRandInteger(0, catLength - 1)].title;
+          console.log(randCat);
+        }
+      });
 
       //Ajax request to display a random restaurant from the random category
       $.ajax({
-        url: '/search/rec/'+ randCat +'/San Diego, CA/0',
+        url: '/search/rec/' + randCat + '/San Diego, CA/0',
         type: 'GET',
         dataType: 'json',
         success: (data) => {
@@ -90,7 +90,7 @@ $(document).ready(() => {
 
   function getNewDis() {
     $.ajax({
-      url: '/search/rec/food/San Diego, CA/' + getRandInteger(0,100),
+      url: '/search/rec/food/San Diego, CA/' + getRandInteger(0, 100),
       type: 'GET',
       dataType: 'json',
       success: (data) => {
@@ -201,15 +201,15 @@ $(document).ready(() => {
   $('#r_addButton').click(() => {
     console.log("businessID: " + rbusinessID, );
 
-		/*database.ref('users/Prasanth/count').once('value', (snapshot) => {
-			const data = snapshot.val();
-			console.log("data " + data);
-			count = data;
+    /*database.ref('users/Prasanth/count').once('value', (snapshot) => {
+    	const data = snapshot.val();
+    	console.log("data " + data);
+    	count = data;
 
-		} );*/
-		setBusiness(rbusinessID);
+    } );*/
+    setBusiness(rbusinessID);
 
-		$('#alertsuccess').show();
+    $('#alertsuccess').show();
 
     getNewRec();
   });
@@ -263,7 +263,7 @@ $(document).ready(() => {
    *
    *
    */
-   function autocomplete(inp, arr) {
+  function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     let currentFocus;
@@ -308,27 +308,27 @@ $(document).ready(() => {
 
         //if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = arr[i].name.substr(0, val.length);
-          b.innerHTML += arr[i].name.substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function(e) {
-            /*insert the value for the autocomplete text field:*/
-            inp.value = this.getElementsByTagName("input")[0].value;
-            document.getElementById("searchButton").style.background = "green";
+        /*create a DIV element for each matching element:*/
+        b = document.createElement("DIV");
+        /*make the matching letters bold:*/
+        b.innerHTML = arr[i].name.substr(0, val.length);
+        b.innerHTML += arr[i].name.substr(val.length);
+        /*insert a input field that will hold the current array item's value:*/
+        b.innerHTML += "<input type='hidden' value='" + arr[i].name + "'>";
+        /*execute a function when someone clicks on the item value (DIV element):*/
+        b.addEventListener("click", function(e) {
+          /*insert the value for the autocomplete text field:*/
+          inp.value = this.getElementsByTagName("input")[0].value;
+          document.getElementById("searchButton").style.background = "green";
           //console.log("RESULT ID: " + resultID);
           /*close the list of autocompleted values,
           (or any other open lists of autocompleted values:*/
           closeAllLists();
         });
-          a.appendChild(b);
+        a.appendChild(b);
 
-        }
-      });
+      }
+    });
 
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function(e) {

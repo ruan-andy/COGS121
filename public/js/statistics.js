@@ -1,3 +1,4 @@
+//gets random color for plots
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -9,8 +10,9 @@ function getRandomColor() {
 
 //put the user's category and likes into catLikes, preferably sorted
 let catLikes = {};
-function populatePlot () {
-  //DATABASE
+
+function populatePlot() {
+  //FIREBASE
   const database = firebase.database();
   console.log('user ' + userName);
   database.ref('users/' + userName).once('value', (snapshot) => {
@@ -29,13 +31,6 @@ function populatePlot () {
             if (c.title in catLikes) catLikes[c.title]++;
             else catLikes[c.title] = 1;
           }
-          /*for (t in getTags(restaurant.categories)) {
-            if (t in catLikes) console.log("Im in it");
-            else console.log("Tag not in catlikes");
-          }*/
-
-          /*$('#history_list').append('<li>' + restaurant.name + '<br>' +
-          '<img src=\"' + restaurant.image_url + '\"' + 'width=300px' + '/>' + '</li>');*/
         }
       })
     }
@@ -57,12 +52,12 @@ function populatePlot () {
     }
     var layout = {
       title: 'Visited Restaurants',
-      barmode: 'stack'      
+      barmode: 'stack'
     };
 
     Plotly.newPlot('myDiv', catdata, layout);
     console.log("Plotted plot!");
-    //mymap.setView(markersLayer.getBounds().getCenter());
+
   });
 }
 
