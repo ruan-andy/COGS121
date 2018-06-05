@@ -17,8 +17,15 @@
 ## Source Code Files
 
 ### index.html
+* Homepage where new recommendations, discover section, and search bar and results are displayed. Users can 'like' a restaurant to add to visit history
 ### index.js
+* Gets recommendations based on history, get new restaurants for discover section, and implements search bar autocomplete
+### index.css
+* Styling for index page as well as other pages
 ### history.html
+* Page that shows list of user's restaurant history with the date they 'liked'/visited
 ### statistics.html
+* Page where user's data is displayed in visualizations to give users an overview of their restaurant choice tendencies
 ### statistics.js
+* Populates data visualizations based on user history
 ### server.js
