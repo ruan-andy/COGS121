@@ -11,6 +11,8 @@ Video Link: https://drive.google.com/file/d/1I6UzK8bwuvzrnJhFjjwMI7Ga2rXbbY-t/vi
 * Made various UI changes (search results, history, etc)
 ### Andy Ruan
 * Initial SQL backend
+* Statistics page - Pie Chart to show user history
+* ajax calls to recieve data from database
 ### Gary Zhao
 * Integrated Yelp API
 * Search autocomplete from Yelp
