@@ -30,3 +30,4 @@
 ### statistics.js
 * Populates data visualizations based on user history
 ### server.js
+* Runs the server code and previous SQL backend
