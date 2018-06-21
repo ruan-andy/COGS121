@@ -19,6 +19,8 @@ $(document).ready(() => {
   let dbusinessID;
   let restaurantID;
 
+  let city;
+
   function getRandInteger(min, max) {
     let num = 0;
     do {
@@ -69,7 +71,7 @@ $(document).ready(() => {
 
       //Ajax request to display a random restaurant from the random category
       $.ajax({
-        url: '/search/rec/' + randCat + '/San Diego, CA/0',
+        url: '/search/rec/' + randCat + '/'+city+', CA/0',
         type: 'GET',
         dataType: 'json',
         success: (data) => {
@@ -92,7 +94,7 @@ $(document).ready(() => {
 
   function getNewDis() {
     $.ajax({
-      url: '/search/rec/food/San Diego, CA/' + getRandInteger(0, 100),
+      url: '/search/rec/food/'+ city+', CA/' + getRandInteger(0, 100),
       type: 'GET',
       dataType: 'json',
       success: (data) => {
@@ -253,6 +255,33 @@ $(document).ready(() => {
       currLocation.push(startPos.coords.latitude);
       currLocation.push(startPos.coords.longitude);
       console.log("Loc: " + currLocation);
+
+      var geocoder;
+      geocoder = new google.maps.Geocoder();
+      var latlng = new google.maps.LatLng(startPos.coords.latitude, startPos.coords.longitude);
+
+  geocoder.geocode(
+      {'latLng': latlng},
+      function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0]) {
+                  var add= results[0].formatted_address ;
+                  var  value=add.split(",");
+
+                  count=value.length;
+
+                  city=value[count-3];
+                  console.log(city);
+              }
+              else  {
+                  console.log("address not found");
+              }
+          }
+          else {
+              console.log("Geocoder failed due to: " + status);
+          }
+      }
+  );
     };
     navigator.geolocation.getCurrentPosition(geoSuccess);
   };
